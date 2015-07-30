@@ -1,0 +1,176 @@
+---
+layout: default
+title: How to use the Readiness Evaluator
+description: 
+permalink: /en/kb/540902.html
+---
+
+<section class="bs-docs-section">
+    <h1 id="introduction">
+        Introduction
+    </h1>
+    <p>
+        This article outlines the steps of using Readiness Evaluator to ensure that your application is compatible with Lucent Sky AVM.
+    </p>
+</section>
+
+<section class="bs-docs-section">
+    <h1 id="more-information">
+        More Information
+    </h1>
+    <p>
+        The Readiness Evaluator ensures an application is compatible with Lucent Sky AVM, by checking if the application is buildable and free of common issues that will cause it to be incompatible with Lucent Sky AVM.
+    </p>
+    <h2 id="prerequisites">
+        Prerequisites
+    </h2>
+    <p>
+        Before running Readiness Evaluator, you'll need to prepare your application's source code.
+    </p>
+    <ul>
+        <li>
+            <strong>.NET Web Applications</strong>
+            <ul>
+                <li>
+                    In File Explorer, go to the root of the solution that contains the web application you want to secure. The root of the solution usually has the file <em>ContosoWeb.sln</em>, where <em>ContosoWeb</em> is the name of the solution.
+                </li>
+                <li>
+                    Select all directories and files, except for those belonging to web applications other than the one you want to secure. You may also unselect non-code files, such as images and videos.
+                </li>
+            </ul>
+        </li>
+        <li>
+            <strong>.NET Web Sites</strong>
+            <ul>
+                <li>
+                    In File Explorer, go to the root of the web site you wish to secure. The root of the web site usually has the file <strong>web.config</strong>.
+                </li>
+                <li>
+                    Select all files under the root. You may unselect non-code files, such as images and videos.
+                </li>
+            </ul>
+        </li>
+        <li>
+            <strong>Java Web Applications</strong>
+            <ul>
+                <li>
+                    In File Explorer, go to the root of the project that contains the web application you wish to secure. The root of the solution usually has the source directory (either java or src) and the web directory (usually webapp or WebContent).
+                </li>
+                <li>
+                    Select all directories and files. You may also unselect non-code files, such as images and videos.
+                </li>
+                <li>
+                    For more details on ensuring that your application directory structure is compatible, see: KB572585 - How to prepare Java source code for analysis by Lucent Sky AVM.
+                </li>
+            </ul>
+        </li>
+        <li>
+            <strong>Java Web Sites</strong>
+            <ul>
+                <li>
+                    In File Explorer, go to the root of the web site you wish to secure. The root of the web site usually has the directory <strong>WEB-INF</strong>.
+                </li>
+                <li>
+                    Select all files under the root. You may unselect non-code files, such as images and videos.
+                </li>
+                <li>
+                    For more details on ensuring that your application directory structure is compatible, see: KB572585 - How to prepare Java source code for analysis by Lucent Sky AVM.
+                </li>
+            </ul>
+        </li>
+    </ul>
+    <p>
+        Readiness Evaluator requires .NET Framework 4.0 or newer to run. You can download the latest version of .NET Framework compatible with your system from Windows Update.
+    </p>
+    <h2 id="using-readiness-evaluator">
+        Using Readiness Evaluator
+    </h2>
+    <ol>
+        <li>
+            Download Readiness Evaluator and unzip to a directory.
+        </li>
+        <li>
+            Double click the icon named <strong>Run.bat</strong>.
+        </li>
+        <li>
+            Enter your framework: <strong>DotNet</strong>, <strong>Java</strong> or <strong>PHP</strong>.
+        </li>
+        <li>
+            Enter your application source root prepared in step 1.
+        </li>
+        <li>
+            Enter the scan arguments if needed.
+        </li>
+        <li>
+            Wait for the Readiness Evaluator as it attempts to build the project, it'll return a message indicating if the build was successful.
+        </li>
+    </ol>
+    <h2 id="troubleshooting">
+        Troubleshooting
+    </h2>
+    <p>
+        Readiness Evaluator will produce a Logs directory to assist the troubleshooting of build errors.
+    </p>
+    <ul>
+        <li>
+            For a .NET application:
+            <ul>
+                <li>
+                    The tool will create an MSBuild.log in the <strong>Logs</strong> directory, and there're the messages during the building stage. If you get any error message in building stage, you can get more information from this file.
+                </li>
+                <li>
+                    The tool will create a Precompilation.log in the <strong>Logs</strong> directory, and there're the messages during the precompilation stage. If you get any error message in precompile stage, you can get more information from this file.
+                </li>
+            </ul>
+        </li>
+        <li>
+            For a Java application:
+            <ul>
+                <li>
+                    If you receive a message that the project could not be compiled, then navigate to the <strong>Logs</strong> directory, and open <strong>Ant.log</strong>. Look for an occurrence of any text string that reads error. Error messages corresponding to <strong>[javac]</strong> denote Java files that are failing to compile; if a JSP file fails to compile, you will see an error message either underneath <strong>jspc</strong> or corresponding to a filename ending in <strong>_jsp.java</strong> corresponding to a line starting with <strong>[javac]</strong>.
+                </li>
+                <li>
+                    If the log files indicate that a .class file could not be found, the application (or projects it depends on) may be referencing libraries that are present in your system and are part of the project's classpath during compilation, but which are not present in the directory of the web application that the Readiness Evaluator is scanning. Identify these libraries, and copy them to the <strong>WEB-INF\lib</strong> folder of the web application. Then run Readiness Evaluator again.
+                </li>
+                <li>
+                    Lucent Sky AVM supports application with a compliance level of 1.5 or higher, but defaults to compliance level 1.6. Readiness Evaluator assumes that source code is compliant with Java 1.6. If the Java compiler is failing to properly compile the project because the compliance level does not correspond to that of your project, contact Lucent Sky support for changing the default compliance level.
+                </li>
+                <li>
+                    If the project builds without error within your local IDE and the log files within the Readiness Evaluator still contain errors indicating that some files are not building, and if the faulting files are encoded with your native encoding (such as Big-5 for example), try converting the faulting source files to UTF-8 (without a BOM) and run Readiness Evaluator again.
+                </li>
+            </ul>
+        </li>
+    </ul>
+</section>
+
+<section class="bs-docs-section">
+    <h1 id="properties">
+        Properties
+    </h1>
+    <p>
+        Article ID: 540902 – Last Reviewed: May 29, 2015 – Revision 1.0
+    </p>
+    <p>
+        <strong>Applies to</strong>
+    </p>
+    <ul>
+        <li>
+            Lucent Sky AVM Enterprise 2
+        </li>
+        <li>
+            Lucent Sky AVM Standard 2
+        </li>
+        <li>
+            Lucent Sky AVM Enterprise 1
+        </li>
+        <li>
+            Lucent Sky AVM Standard 1
+        </li>
+        <li>
+            Lucent Sky AVM On-Demand
+        </li>
+    </ul>
+    <p>
+        <strong>Keywords</strong>: kbhowto readinessevaluator KB540902
+    </p>
+</section>

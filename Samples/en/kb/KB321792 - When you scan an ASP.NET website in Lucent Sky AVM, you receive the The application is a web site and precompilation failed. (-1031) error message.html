@@ -1,0 +1,139 @@
+---
+layout: default
+title: When you scan an ASP.NET website in Lucent Sky AVM, you receive the "The application is a web site and precompilation failed. (-1031)" error message
+description: 
+permalink: /en/kb/321792.html
+---
+
+<section class="bs-docs-section">
+    <h1 id="symptoms">
+        Symptoms
+    </h1>
+    <p>
+        When you scan an ASP.NET website in Lucent Sky AVM, the scan fails and you receive the following error message:
+        <blockquote>
+            The application is a web site and precompilation failed. (-1031)
+        </blockquote>
+    </p>
+</section>
+
+<section class="bs-docs-section">
+    <h1 id="cause">
+        Cause
+    </h1>
+    <p>
+        ASP.NET websites are composed of Web Forms (.aspx) and Web User Controls (.ascx) and do not have a project file. Lucent Sky AVM requires a ASP.NET website to be compilable before it can be scanned. A -1031 error means the ASP.NET website contains sections are cannot be precompiled. This is common to legacy ASP.NET websites that are no longer maintained and may contain obsolte source code that are not compilable.
+    </p>
+</section>
+
+<section class="bs-docs-section">
+    <h1 id="resolution">
+        Resolution
+    </h1>
+    <p>
+        Before a ASP.NET website can be scanned by Lucent Sky AVM, all parts of it must be able to compile. Source code that are not compilable should be modified or removed.
+    </p>
+    <h3 id="method-1">
+        Method 1: Use Visual Studio
+    </h3>
+    <ol>
+        <li>
+            Open Visual Studio. Most versions and editions of Visual Studio are suitable with this task.
+        </li>
+        <li>
+            In the <strong>File</strong> menu, select <strong>Open</strong>, then select <strong>Web Site</strong>. In the dialog box, choose the root directory of the legacy website, then click <strong>Open</strong>.
+        </li>
+        <li>
+            In <strong>Solution Explorer</strong>, right-click on the website, then select <strong>Publish Web Site</strong>. In <strong>Target Location</strong>, choose an arbitrary temporary location to publish the website to. Then click <strong>OK</strong>.
+        </li>
+        <li>
+            Verify that no error occurred during the publication process. Once the publication has completed successfully, the status bar should display the message <strong>Publish succeeded</strong>. If file not found errors occur during the publication, follow either step 3(a) or 3(b):
+            <ol type="a">
+                <li>
+                    Locate the missing User Control or file, and place it in the location indicated by the error message.
+                </li>
+                <li>
+                    Remove the Web Form (.aspx) that's causing the error, if it's no longer used.
+                </li>
+            </ol>
+            For other errors, resolving them according to the application requirement. Repeat this step until there're no more errors. Publish the website again by starting at step 3.
+        </li>
+        <li>
+            In <strong>File Explorer</strong>, browse to the root directory of the website. Select all files, right-click, select <strong>Send to</strong>, then select <strong>Compressed (zipped) folder</strong>.
+        </li>
+        <li>
+            In Lucent Sky AVM Web UI, create a new scan and use the .zip file created in step 4 as <strong>Source Code Archive</strong>.
+        </li>
+    </ol>
+    <h3 id="method-2">
+        Method 2: Use ASP.NET compilation tool (aspnet_compiler.exe)
+    </h3>
+    <ol>
+        <li>
+            In Command Prompt, and navigate to the directory <strong>%WINDIR%\Microsoft.NET\Framework\v2.0.50727</strong> (for ASP.NET websites running on .NET Framework 2.0 - 3.5) or <strong>%WINDIR%\Microsoft.NET\Framework\v4.0.30319</strong> (for ASP.NET websites running on .NET Framework 4.0 or newer).
+        </li>
+        <li>
+            Execute the following command:
+            <table>
+                <tbody>
+                    <tr>
+                        <td style="margin: 5px 0; padding: 0 5px; border-width: 1px; border-style: solid; border-collapse: collapse;">
+                            <span style="font-family: Consolas">aspnet_compiler.exe -v / -p <em>'C:\website-root'</em> <em>'C:\website-temp-root'</em> -f</span>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <em>C:\website-root</em> is the directory containing the ASP.NET website, and <em>C:\website-temp-root</em> is an arbitrary temporary directory
+        </li>
+        <li>
+            Verify that no error occurred during the compilation process. If file not found errors occur during the compilation, follow either step 3(a) or 3(b):
+            <ol type="a">
+                <li>
+                    Locate the missing User Control or file, and place it in the location indicated by the error message.
+                </li>
+                <li>
+                    Remove the Web Form (.aspx) that's causing the error, if it's no longer used.
+                </li>
+            </ol>
+            For other errors, resolving them according to the application requirement. Repeat this step until there're no more errors. Compile the website again by starting at step 3.
+        </li>
+        <li>
+            In <strong>File Explorer</strong>, browse to the root directory of the website. Select all files, right-click, select Send to, then select <strong>Compressed (zipped) folder</strong>.
+        </li>
+        <li>
+            In Lucent Sky AVM Web UI, create a new scan and use the .zip file created in step 4 as <strong>Source Code Archive</strong>.
+        </li>
+    </ol>
+</section>
+
+<section class="bs-docs-section">
+    <h1 id="properties">
+        Properties
+    </h1>
+    <p>
+        Article ID: 321792 – Last Reviewed: June 24, 2015 – Revision 1.1
+    </p>
+    <p>
+        <strong>Applies to</strong>
+    </p>
+    <ul>
+        <li>
+            Lucent Sky AVM Enterprise 2
+        </li>
+        <li>
+            Lucent Sky AVM Standard 2
+        </li>
+        <li>
+            Lucent Sky AVM Enterprise 1
+        </li>
+        <li>
+            Lucent Sky AVM Standard 1
+        </li>
+        <li>
+            Lucent Sky AVM On-Demand
+        </li>
+    </ul>
+    <p>
+        <strong>Keywords</strong>: kbresolve kberrmsg kbprb KB321792
+    </p>
+</section>

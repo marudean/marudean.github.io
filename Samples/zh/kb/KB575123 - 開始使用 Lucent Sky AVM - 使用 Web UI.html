@@ -1,0 +1,283 @@
+---
+layout: default-zh
+title: 開始使用 Lucent Sky AVM - 使用 Web UI
+description: 
+permalink: /zh/kb/575123.html
+---
+
+<section class="bs-docs-section">
+    <h1 id="introduction">
+        介紹
+    </h1>
+    <p>
+        Lucent Sky AVM 是一個幫助開發者及相關人員偵測程式碼弱點並自動修正的系統。Lucent Sky AVM 包括了 CLEAR Engine（分析及修正引擎）、 Web UI 及 Developer UIs 。其中 Developer UIs 包括：Lucent Sky AVM CLI、Lucent Sky AVM Visual Studio 擴充元件和 Eclipse 外掛元件。
+    </p>
+</section>
+
+<section class="bs-docs-section">
+    <h1 id="more-information">
+        更多資訊
+    </h1>
+    <h2 id="prerequisites-for-developers">
+        開發者需求
+    </h2>
+    <p>
+        開發者應熟悉下列的工具：
+    </p>
+    <ul>
+        <li>
+            <strong>C#、Java 或 VB.NET</strong>
+            <ul>
+                <li>
+                    這篇指南的範例及截圖都是使用 C#（C# 的語法跟 Java 和 VB.NET 都非常相似）。
+                </li>
+            </ul>
+        </li>
+    </ul>
+    <h2 id="using-web-ui">
+        使用 Web UI
+    </h2>
+    <p>
+        本段你將會看到：
+    </p>
+    <ul>
+        <li>
+            如何透過 Web UI 來偵測及修正應用程式的步驟
+        </li>
+    </ul>
+    <p>
+        本段結束時，你會知道如何：
+    </p>
+    <ul>
+        <li>
+            建立一個包含了你的應用程式程式碼的壓縮檔案
+        </li>
+        <li>
+            使用 Web UI 來掃描你的應用程式弱點並自動修正
+        </li>
+        <li>
+            查看 Web UI 掃描的弱點及修正結果
+        </li>
+        <li>
+            透過 Web UI 下載你應用程式修正過後的程式碼
+        </li>
+        <li>
+            透過 Web UI 下載你應用程式的資安結果報告
+        </li>
+    </ul>
+    <p>
+        <strong>建立一個應用程式的壓縮檔案</strong>
+    </p>
+    <ul>
+        <li>
+            <strong>.NET網頁應用程式（.NET Web Applications）</strong>
+            <ol>
+                <li>
+                    以檔案總管開啟你想掃描的網頁應用程式方案的根目錄，也就是包含 <em>ContosoWeb.sln</em> 檔案的目錄，其中 <em>ContosoWeb</em> 是你網頁應用程式方案的名稱。
+                </li>
+                <li>
+                    選取全部的網頁應用程式資料夾及檔案，但你可以排除不希望掃描的檔案、或是不包含程式碼的檔案，例如圖片或影片檔。
+                </li>
+                <li>
+                    以滑鼠右鍵點選選擇的檔案，將滑鼠移到 <strong>[傳送到(N)]</strong> 標籤，並選擇 <strong>[壓縮的(Zipped) 資料夾]</strong>。或者你也可以使用你喜歡的壓縮軟體，例如 7-Zip 或是 WinRAR 將檔案壓縮成 zip 格式。
+                </li>
+            </ol>
+        </li>
+    </ul>
+    <ul>
+        <li>
+            <strong>.NET 網站</strong>
+            <ol>
+                <li>
+                    以檔案總管開啟你想掃描的網站的根目錄，這個目錄通常包含 <strong>web.config</strong> 檔案。
+                </li>
+                <li>
+                    選取全部根目錄中包含的資料夾及檔案，但你可以排除不包含程式碼的檔案，例如圖片或影片檔。
+                </li>
+                <li>
+                    以滑鼠右鍵點選選擇的檔案，將滑鼠移到 <strong>[傳送到(N)]</strong> 標籤，並選擇 <strong>[壓縮的(Zipped) 資料夾]</strong>。或者你也可以使用你喜歡的壓縮軟體，例如 7-Zip 或是 WinRAR 將檔案壓縮成 zip 格式。
+                </li>
+            </ol>
+        </li>
+    </ul>
+    <ul>
+        <li>
+            <strong>Java 網頁應用程式（Java Web Applications）</strong>
+            <ol>
+                <li>
+                    以檔案總管開啟你想掃描的網頁應用程式的根目錄，這個目錄通常包含來源資料夾（通常命名為 <strong>java</strong> 或 <strong>src</strong>）及網頁資料夾（通常命名為 <strong>webapp</strong> 或 <strong>WebContent</strong>）。
+                </li>
+                <li>
+                    選取全部根目錄中包含的資料夾及檔案，但你可以排除不包含程式碼的檔案，例如圖片或影片檔。
+                </li>
+                <li>
+                    以滑鼠右鍵點選選擇的檔案，將滑鼠移到 <strong>[傳送到(N)]</strong> 標籤，並選擇 <strong>[壓縮的(Zipped) 資料夾]</strong>。或者你也可以使用你喜歡的壓縮軟體，例如 7-Zip 或是 WinRAR 將檔案壓縮成 zip 格式。
+                </li>
+            </ol>
+        </li>
+    </ul>
+    <ul>
+        <li>
+            <strong>Java 網站</strong>
+            <ol>
+                <li>
+                    以檔案總管開啟你想掃描的網站的根目錄，這個目錄通常包含資料夾 <strong>WEB-INF</strong>。
+                </li>
+                <li>
+                    選取全部根目錄中包含的資料夾及檔案，但你可以排除不包含程式碼的檔案，例如圖片或影片檔。
+                </li>
+                <li>
+                    以滑鼠右鍵點選選擇的檔案，將滑鼠移到 <strong>[傳送到(N)]</strong> 標籤，並選擇 <strong>[壓縮的(Zipped) 資料夾]</strong>。或者你也可以使用你喜歡的壓縮軟體，例如 7-Zip 或是 WinRAR 將檔案壓縮成 zip 格式。
+                </li>
+            </ol>
+        </li>
+    </ul>
+    <p>
+        若你想獲取更多建立應用程式程式碼壓縮檔的相關資訊，請參考 Lucent Sky 知識庫：
+        <br />
+        &nbsp;&nbsp;&nbsp;&nbsp;<a href="342055">How to create a source code archive of an application for analysis and mitigation</a>
+    </p>
+    <p>
+        <strong>掃描應用程式弱點</strong>
+    </p>
+    <ol>
+        <li>
+            以瀏覽器開啟 Web UI 並以你的帳號登入。
+        </li>
+        <li>
+            點選左側 <strong>[新應用程式]</strong> 後，請輸入應用程式名稱並選擇框架類型後，點選<strong>建立</strong>按鈕。或者視你的需要，也可以先點選 <strong>[更多選項]</strong> ，針對系統分析及修正的預設值進行設定，或者你也可以選擇稍後再進行這些設定。
+        </li>
+        <li>
+            接著在 <strong>[分析方式]</strong> 請選擇 <strong>[靜態程式碼分析]</strong>，至於 <strong>[分析模式]</strong> 部分，你可以選擇 <strong>[標準分析]</strong> 進行一個標準模式的分析、也可以選擇 [完整分析] 進行一個較完整且深入的分析。接著請在 [程式碼壓縮檔] 部分選擇上傳你程式程式碼的 zip 檔案。在此處你也可以點選 <strong>[更多選項]</strong> ，針對系統分析及修正的設定值進行修改。完成相關設定後請點選 <strong>[上傳]</strong> 按鈕。
+        </li>
+        <li>
+            網頁將會自動刷新，此時會出現應用程式方框顯示掃描的進度及情況，掃描共分為六個階段：
+            <ul>
+                <li>
+                    建構中
+                </li>
+                <li>
+                    編譯中
+                </li>
+                <li>
+                    分析中 (S-1)
+                </li>
+                <li>
+                    分析中 (S-2)
+                </li>
+                <li>
+                    分析中 (S-3)
+                </li>
+                <li>
+                    分析中 (S-4)
+                </li>
+            </ul>
+        </li>
+        <li>
+            掃描所需的時間大約在幾秒至幾小時都有可能，需視應用程式的大小及複雜度而定。在大多數的情況下，10萬行左右的程式碼會在10分鐘內完成掃描。
+        </li>
+        <li>
+            當掃描結束時，應用程式方框將會顯示總弱點數、自動修正弱點數及未自動修正的弱點數目。
+        </li>
+    </ol>
+    <p>
+        <strong>查看 Web UI 偵測到的弱點及立即修正的結果</strong>
+    </p>
+    <ol>
+        <li>
+            以瀏覽器開啟 Web UI 並以你的帳號登入。
+        </li>
+        <li>
+            點選你想檢視的應用程式方框，將會進入 <strong>[掃描概要]</strong> 頁面。
+        </li>
+        <li>
+            <strong>[掃描概要]</strong> 頁面分為三個部分：效益概觀、弱點資訊及附加資訊。
+            <ul>
+                <li>
+                    <strong>效益概觀</strong> 顯示這個應用程式節省的修正成本及節省的開發時間。
+                </li>
+                <li>
+                    <strong>弱點資訊</strong> 圓餅圖顯示了弱點種類的分佈情況、並顯示各種類的弱點數量。若點選圓餅圖上該弱點種類、或右側該分類區塊，則會進入該種類的 <strong>[弱點清單]</strong> 頁面。
+                </li>
+                <li>
+                    <strong>附加資訊</strong> 顯示此次掃描的相關資訊並比較這個應用程式前後次掃描的弱點數量變化。
+                </li>
+            </ul>
+        </li>
+        <li>
+            <strong>[弱點清單]</strong> 頁面會列出該種類所有的弱點，點選單一弱點則可以進入 <strong>[弱點明細]</strong> 頁面。
+        </li>
+        <li>
+            <strong>[弱點明細]</strong> 頁面頁面會在標題顯示該弱點的分類、檔案名稱及行數、 <strong>[陳述]</strong> 部分會顯示弱點在程式碼中的流程，至於 <strong>[立即修正]</strong> 部分則顯示建議修正的檔案位置、行號及建議用來取代該行的程式碼。
+        </li>
+    </ol>
+    <p>
+        <strong>下載應用程式修正過後的程式碼</strong>
+    </p>
+    <ol>
+        <li>
+            以瀏覽器開啟 Web UI 並以你的帳號登入。
+        </li>
+        <li>
+            點選你想檢視的應用程式方框，將會進入 <strong>[掃描概要]</strong> 頁面。
+        </li>
+        <li>
+            點選畫面左側的 <strong>[修正]</strong> 按鈕，將會跳出一個視窗，你可以選擇你是否需要以註解方式加入修正資訊及原始程式碼資訊。若你選擇加入相關資訊，會看到類似這樣的結果：
+            <div>
+                {% highlight csharp %}
+                    Response.Write(HtmlEncode(Request["foo"])); // CWE79 (High); Original source code: Response.Write(Request["Foo"]);
+                {% endhighlight %}
+            </div>
+            其中 <em>CWE79 (High)</em> 是修正資訊、而 <em>Original source code: Response.Write(Request["Foo"]);</em> 則是原始程式碼。
+        </li>
+        <li>
+            點選 <strong>[修正並下載]</strong> 按鈕，將會下載應用程式修正過後的程式碼。
+        </li>
+    </ol>
+    <p>
+        <strong>下載應用程式的資訊安全報告</strong>
+    </p>
+    <ol>
+        <li>
+            以瀏覽器開啟 Web UI 並以你的帳號登入。
+        </li>
+        <li>
+            點選你想檢視的應用程式方框，將會進入 <strong>[掃描概要]</strong> 頁面。
+        </li>
+        <li>
+            點選畫面左側的 <strong>[報告]</strong> 按鈕，將會跳出一個視窗，選擇要下載的檔案格式後，點選 <strong>[產生並下載]</strong> 按鈕來下載報告。
+        </li>
+    </ol>
+</section>
+
+<section class="bs-docs-section">
+    <h1 id="properties">
+        屬性
+    </h1>
+    <p>
+        文章編號：KB575123 – 上次校閱：2015 年 8 月 7 日 – 版次 1.2
+    </p>
+    <p>
+        <strong>適用於</strong>
+    </p>
+    <ul>
+        <li>
+            Lucent Sky AVM Enterprise 2
+        </li>
+        <li>
+            Lucent Sky AVM Standard 2
+        </li>
+        <li>
+            Lucent Sky AVM Enterprise 1
+        </li>
+        <li>
+            Lucent Sky AVM Standard 1
+        </li>
+        <li>
+            Lucent Sky AVM On-Demand
+        </li>
+    </ul>
+    <p>
+        <strong>關鍵字</strong>: kbgetstarted avm interface webui KB540902
+    </p>
+</section>

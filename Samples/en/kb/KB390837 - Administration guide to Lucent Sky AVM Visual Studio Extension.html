@@ -1,0 +1,231 @@
+---
+layout: default
+title: Administration guide to Lucent Sky AVM Visual Studio Extension
+description: 
+permalink: /en/kb/390837.html
+---
+
+<section class="bs-docs-section">
+    <h1 id="introduction">
+        Introduction
+    </h1>
+    <p>
+        Lucent Sky AVM has several different UIs designed for developers, including CLI, Visual Studio Extension and Eclipse plug-in. Lucent Sky AVM Visual Studio Extension allows developers to secure their applications in the environment they're familiar with. This guide covers the installation, configuration, administration and removal of Lucent Sky AVM Visual Studio Extension.
+    </p>
+</section>
+
+<section class="bs-docs-section">
+    <h1 id="more-information">
+        More Information
+    </h1>
+    <h2 id="system-requirements">
+        System Requirements
+    </h2>
+    <p>
+        Processor, memory, hard disk space and operating system requirements:
+        <table>
+            <thead style="background-color: #c8c8c8;">
+                <tr>
+                    <td style="margin: 5px 0; padding: 0 5px; border-width: 1px; border-style: solid; border-collapse: collapse;">
+                        Components
+                    </td>
+                    <td style="margin: 5px 0; padding: 0 5px; border-width: 1px; border-style: solid; border-collapse: collapse;">
+                        Requirement
+                    </td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td style="margin: 5px 0; padding: 0 5px; border-width: 1px; border-style: solid; border-collapse: collapse;">
+                        Hard Disk Space
+                    </td>
+                    <td style="margin: 5px 0; padding: 0 5px; border-width: 1px; border-style: solid; border-collapse: collapse;">
+                        200 MB
+                    </td>
+                </tr>
+                <tr>
+                    <td style="margin: 5px 0; padding: 0 5px; border-width: 1px; border-style: solid; border-collapse: collapse;">
+                        Memory
+                    </td>
+                    <td style="margin: 5px 0; padding: 0 5px; border-width: 1px; border-style: solid; border-collapse: collapse;">
+                        Minimum: 1 GB (1.5 GB if running inside a virtual machine)
+                        <br />
+                        Recommended: 2 GB
+                    </td>
+                </tr>
+                <tr>
+                    <td style="margin: 5px 0; padding: 0 5px; border-width: 1px; border-style: solid; border-collapse: collapse;">
+                        Processor
+                    </td>
+                    <td style="margin: 5px 0; padding: 0 5px; border-width: 1px; border-style: solid; border-collapse: collapse;">
+                        Minimum: 1.6 GHz processor
+                        <br />
+                        Recommended: 2.0 GHz processor
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </p>
+    <p>
+        Lucent Sky AVM Server can be installed on the following operating systems:
+    </p>
+    <ul>
+        <li>
+            Windows Server 2012 or Windows Server 2012 R2 Datacenter and Standard
+        </li>
+        <li>
+            Windows Server 2008 R2 Datacenter, Enterprise and Standard with SP1
+        </li>
+        <li>
+            Windows 8 and Windows 8.1 Enterprise and Pro
+        </li>
+        <li>
+            Windows 7 Ultimate, Enterprise and Professional with SP1
+        </li>
+    </ul>
+    <p>
+        Lucent Sky AVM Visual Studio Extension can be installed with the following versions of Visual Studio:
+    </p>
+    <ul>
+        <li>
+            Visual Studio 2013 Ultimate, Premium, Professional and Community
+        </li>
+        <li>
+            Visual Studio 2012 Ultimate, Premium and Professional
+        </li>
+    </ul>
+    <p>
+        Visual Studio Express does not support extensions. It is recommended to use Lucent Sky AVM CLI with Visual Studio Express.
+    </p>
+    <h2 id="installing-lucent-sky-avm-visual-studio-extension">
+        Installing Lucent Sky AVM Visual Studio Extension
+    </h2>
+    <p>
+        In this section, you will see:
+    </p>
+    <ul>
+        <li>
+            A demonstration of how to prepare Visual Studio to communicate with a Lucent Sky AVM server, and install Lucent Sky AVM Visual Studio Extension on your development computer.
+        </li>
+    </ul>
+    <p>
+        At the end of this section, you will be able to:
+    </p>
+    <ul>
+        <li>
+            Prepare Visual Studio to communicate with a Lucent Sky AVM server.
+        </li>
+        <li>
+            Install Lucent Sky AVM Visual Studio Extension on your development computer.
+        </li>
+    </ul>
+    <p>
+        <strong>To prepare Visual Studio to communicate with AVM Server</strong>
+    </p>
+    <ol>
+        <li>
+            Close any Visual Studio instance that's running. Open the Visual Studio configuration file (usually located at <strong>C:\Program Files (x86)\Microsoft Visual Studio <em>11.0</em>\Common7\IDE\devenv.exe.config</strong>, where <em>11.0</em> is the version of Visual Studio) with a text editor. Insert the following configuration just above the end tag </configuration>, where <em>clear.contoso.com</em> is the FQDN of the Lucent Sky AVM server.
+            <table>
+                <tr>
+                    <td style="margin: 5px 0; padding: 0 5px; border-width: 1px; border-style: solid; border-collapse: collapse;">
+                        <div style="font-family: Consolas;">
+                            &lt;?xml version="1.0" ?&gt;<br />
+                            &lt;configuration&gt;<br />
+                            ......<br />
+                            ......<br />
+                            <br />
+                            &lt;!-- INSERT THE BOLD TEXT JUST ABOVE THE END TAG OF CONFIGURATION --&gt;<br />
+                            <br />
+                            &lt;system.servicemodel&gt;<br />
+                            &nbsp;&nbsp;&lt;bindings&gt;<br />
+                            &nbsp;&nbsp;&nbsp;&nbsp;&lt;nettcpbinding&gt;<br />
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;binding name="NetTcpBinding_IGroup" /&gt;<br />
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;binding name="NetTcpBinding_IProject" /&gt;<br />
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;binding name="NetTcpBinding_IResult" /&gt;<br />
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;binding name="NetTcpBinding_IScan" /&gt;<br />
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;binding name="NetTcpBinding_ITransformation" /&gt;<br />
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;binding name="NetTcpBinding_ITransport"&gt;<br />
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;readerquotas maxarraylength="1073741824" maxstringcontentlength="1073741824" /&gt;<br />
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/binding&gt;<br />
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;binding name="NetTcpBinding_IUser" /&gt;<br />
+                            &nbsp;&nbsp;&nbsp;&nbsp;&lt;/nettcpbinding&gt;<br />
+                            &nbsp;&nbsp;&lt;/bindings&gt;<br />
+                            &nbsp;&nbsp;&lt;client&gt;<br />
+                            &nbsp;&nbsp;&nbsp;&nbsp;&lt;endpoint address="net.tcp://<em>clear.contoso.com</em>:5759/SkyAnalyzer/Group" binding="netTcpBinding" bindingconfiguration="NetTcpBinding_IGroup" contract="Clear.Engine.Group.IGroup" name="NetTcpBinding_IGroup"&gt;<br />
+                            &nbsp;&nbsp;&nbsp;&nbsp;&lt;/endpoint&gt;<br />
+                            &nbsp;&nbsp;&nbsp;&nbsp;&lt;endpoint address="net.tcp://<em>clear.contoso.com</em>:5759/SkyAnalyzer/Project" binding="netTcpBinding" bindingconfiguration="NetTcpBinding_IProject" contract="Clear.Engine.Project.IProject" name="NetTcpBinding_IProject"&gt;<br />
+                            &nbsp;&nbsp;&nbsp;&nbsp;&lt;/endpoint&gt;<br />
+                            &nbsp;&nbsp;&nbsp;&nbsp;&lt;endpoint address="net.tcp://<em>clear.contoso.com</em>:5759/SkyAnalyzer/Result" binding="netTcpBinding" bindingconfiguration="NetTcpBinding_IResult" contract="Clear.Engine.Result.IResult" name="NetTcpBinding_IResult"&gt;<br />
+                            &nbsp;&nbsp;&nbsp;&nbsp;&lt;/endpoint&gt;<br />
+                            &nbsp;&nbsp;&nbsp;&nbsp;&lt;endpoint address="net.tcp://<em>clear.contoso.com</em>:5759/SkyAnalyzer/Scan" binding="netTcpBinding" bindingconfiguration="NetTcpBinding_IScan" contract="Clear.Engine.Scan.IScan" name="NetTcpBinding_IScan"&gt;<br />
+                            &nbsp;&nbsp;&nbsp;&nbsp;&lt;/endpoint&gt;<br />
+                            &nbsp;&nbsp;&nbsp;&nbsp;&lt;endpoint address="net.tcp://<em>clear.contoso.com</em>:5759/SkyAnalyzer/Transformation" binding="netTcpBinding" bindingconfiguration="NetTcpBinding_ITransformation" contract="Clear.Engine.Transformation.ITransformation" name="NetTcpBinding_ITransformation"&gt;<br />
+                            &nbsp;&nbsp;&nbsp;&nbsp;&lt;/endpoint&gt;<br />
+                            &nbsp;&nbsp;&nbsp;&nbsp;&lt;endpoint address="net.tcp://<em>clear.contoso.com</em>:5759/SkyAnalyzer/Transport" binding="netTcpBinding" bindingconfiguration="NetTcpBinding_ITransport" contract="Clear.Engine.Transport.ITransport" name="NetTcpBinding_ITransport"&gt;<br />
+                            &nbsp;&nbsp;&nbsp;&nbsp;&lt;/endpoint&gt;<br />
+                            &nbsp;&nbsp;&nbsp;&nbsp;&lt;endpoint address="net.tcp://<em>clear.contoso.com</em>:5759/SkyAnalyzer/User" binding="netTcpBinding" bindingconfiguration="NetTcpBinding_IUser" contract="Clear.Engine.User.IUser" name="NetTcpBinding_IUser"&gt;<br />
+                            &nbsp;&nbsp;&nbsp;&nbsp;&lt;/endpoint&gt;<br />
+                            &nbsp;&nbsp;&lt;/client&gt;<br />
+                            &lt;/system.servicemodel&gt;<br />
+                            &lt;/configuration&gt;<br />
+                        </div>
+                    </td>
+                </tr>
+            </table>
+            <p>
+                In the configuration above, the communication between Lucent Sky AVM server and Visual Studio is not secured. Consult your system administrator about how to enable transport and/or message security on WCF TCP endpoints.
+            </p>
+        </li>
+    </ol>
+    <p>
+        <strong>To install Lucent Sky AVM Visual Studio Extension</strong>
+    </p>
+    <ol>
+        <li>
+            Double-click on the AVM Visual Studio Extension setup file (<strong>CLEAR_VSIX.vsix</strong>).
+        </li>
+        <li>
+            Follow the installation wizard to complete the setup.
+        </li>
+    </ol>
+    <h2 id="uninstalling-avm-visual-studio-extension">
+        Uninstalling AVM Visual Studio Extension
+    </h2>
+    <p>
+        <strong>To uninstall AVM Visual Studio Extension</strong>
+    </p>
+    <ol>
+        <li>
+            In Visual Studio, click <strong>Extensions and Updates</strong> in the <strong>Tools</strong> menu, locate <strong>Lucent Sky AVM Visual Studio Package</strong> in the list of installed extensions, then click <strong>Uninstall</strong>.
+        </li>
+    </ol>
+</section>
+
+<section class="bs-docs-section">
+    <h1 id="properties">
+        Properties
+    </h1>
+    <p>
+        Article ID: 390837 – Last Reviewed: May 31, 2015 – Revision 1.1
+    </p>
+    <p>
+        <strong>Applies to</strong>
+    </p>
+    <ul>
+        <li>
+            Lucent Sky AVM Enterprise 2
+        </li>
+        <li>
+            Lucent Sky AVM Standard 2
+        </li>
+        <li>
+            Lucent Sky AVM Enterprise 1
+        </li>
+        <li>
+            Lucent Sky AVM Standard 1
+        </li>
+    </ul>
+    <p>
+        <strong>Keywords</strong>: kbguide avm administrative visualstudio vsix KB306011
+    </p>
+</section>

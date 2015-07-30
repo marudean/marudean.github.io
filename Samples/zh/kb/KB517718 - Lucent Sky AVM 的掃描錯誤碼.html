@@ -1,0 +1,297 @@
+---
+layout: default-zh
+title: Lucent Sky AVM 的掃描錯誤碼
+description: 
+permalink: /zh/kb/517718.html
+---
+
+<section class="bs-docs-section">
+    <h1 id="introduction">
+        介紹
+    </h1>
+    <p>
+        Lucent Sky AVM 在掃描失敗時會產生一個錯誤碼。這個錯誤碼可以幫助你分析發生錯誤的原因。在本文中，我們將幫助你找到你的錯誤碼，並建議你應該如何修正錯誤。
+    </p>
+</section>
+
+<section class="bs-docs-section">
+    <h1 id="more-information">
+        更多資訊
+    </h1>
+    <h2 id="scan-error-code-list">
+        掃描錯誤碼列表
+    </h2>
+    <table>
+        <thead style="background-color: #c8c8c8;">
+            <tr>
+                <td style="margin: 5px 0; padding: 0 5px; border-width: 1px; border-style: solid; border-collapse: collapse;">
+                    錯誤碼
+                </td>
+                <td style="margin: 5px 0; padding: 0 5px; border-width: 1px; border-style: solid; border-collapse: collapse;">
+                    描述
+                </td>
+                <td style="margin: 5px 0; padding: 0 5px; border-width: 1px; border-style: solid; border-collapse: collapse;">
+                    解決方式
+                </td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td style="margin: 5px 0; padding: 0 5px; border-width: 1px; border-style: solid; border-collapse: collapse;">
+                    -1000
+                </td>
+                <td style="margin: 5px 0; padding: 0 5px; border-width: 1px; border-style: solid; border-collapse: collapse;">
+                    內部錯誤導致應用程式無法被建置。
+                </td>
+                <td style="margin: 5px 0; padding: 0 5px; border-width: 1px; border-style: solid; border-collapse: collapse;">
+                    請聯絡技術支援。
+                </td>
+            </tr>
+            <tr>
+                <td style="margin: 5px 0; padding: 0 5px; border-width: 1px; border-style: solid; border-collapse: collapse;">
+                    -1011
+                </td>
+                <td style="margin: 5px 0; padding: 0 5px; border-width: 1px; border-style: solid; border-collapse: collapse;">
+                    找不到有效的應用程式。
+                </td>
+                <td style="margin: 5px 0; padding: 0 5px; border-width: 1px; border-style: solid; border-collapse: collapse;">
+                    請確認應用程式中包和了專案檔案或是「web.config」檔案。
+            </tr>
+            <tr>
+                <td style="margin: 5px 0; padding: 0 5px; border-width: 1px; border-style: solid; border-collapse: collapse;">
+                    -1021
+                </td>
+                <td style="margin: 5px 0; padding: 0 5px; border-width: 1px; border-style: solid; border-collapse: collapse;">
+                    應用程式無法被建置。
+                </td>
+                <td style="margin: 5px 0; padding: 0 5px; border-width: 1px; border-style: solid; border-collapse: collapse;">
+                    請確認應用程式可以被 Visual Studio 或是 MSBuild 建置。
+                </td>
+            </tr>
+            <tr>
+                <td style="margin: 5px 0; padding: 0 5px; border-width: 1px; border-style: solid; border-collapse: collapse;">
+                    -1031
+                </td>
+                <td style="margin: 5px 0; padding: 0 5px; border-width: 1px; border-style: solid; border-collapse: collapse;">
+                    應用程式為網站且先行編譯失敗。
+                </td>
+                <td style="margin: 5px 0; padding: 0 5px; border-width: 1px; border-style: solid; border-collapse: collapse;">
+                    請確認應用程式可以被 Visual Studio 或是 ASP.NET compiler 發佈。
+                </td>
+            </tr>
+            <tr>
+                <td style="margin: 5px 0; padding: 0 5px; border-width: 1px; border-style: solid; border-collapse: collapse;">
+                    -1032
+                </td>
+                <td style="margin: 5px 0; padding: 0 5px; border-width: 1px; border-style: solid; border-collapse: collapse;">
+                    先行編譯失敗，且「bin」目錄不存在。
+                </td>
+                <td style="margin: 5px 0; padding: 0 5px; border-width: 1px; border-style: solid; border-collapse: collapse;">
+                    請確認應用程式是否包含「bin」目錄。
+                </td>
+            </tr>
+            <tr>
+                <td style="margin: 5px 0; padding: 0 5px; border-width: 1px; border-style: solid; border-collapse: collapse;">
+                    -1091
+                </td>
+                <td style="margin: 5px 0; padding: 0 5px; border-width: 1px; border-style: solid; border-collapse: collapse;">
+                    至少一個在設定檔（例如「web.config」）中被參考的組件無法在應用程式的「bin」目錄中被找到。
+                </td>
+                <td style="margin: 5px 0; padding: 0 5px; border-width: 1px; border-style: solid; border-collapse: collapse;">
+                    請確認應用程式的「bin」目錄是否包含設定檔中參考的組件。
+                </td>
+            </tr>
+            <tr>
+                <td style="margin: 5px 0; padding: 0 5px; border-width: 1px; border-style: solid; border-collapse: collapse;">
+                    -1100
+                </td>
+                <td style="margin: 5px 0; padding: 0 5px; border-width: 1px; border-style: solid; border-collapse: collapse;">
+                    應用程式無法被建置。
+                </td>
+                <td style="margin: 5px 0; padding: 0 5px; border-width: 1px; border-style: solid; border-collapse: collapse;">
+                    請聯絡技術支援。
+                </td>
+            </tr>
+            <tr>
+                <td style="margin: 5px 0; padding: 0 5px; border-width: 1px; border-style: solid; border-collapse: collapse;">
+                    -1111
+                </td>
+                <td style="margin: 5px 0; padding: 0 5px; border-width: 1px; border-style: solid; border-collapse: collapse;">
+                    找不到有效的應用程式。
+                </td>
+                <td style="margin: 5px 0; padding: 0 5px; border-width: 1px; border-style: solid; border-collapse: collapse;">
+                    請確認應用程式中包和了「WEB-INF」目錄。
+                </td>
+            </tr>
+            <tr>
+                <td style="margin: 5px 0; padding: 0 5px; border-width: 1px; border-style: solid; border-collapse: collapse;">
+                    -1112
+                </td>
+                <td style="margin: 5px 0; padding: 0 5px; border-width: 1px; border-style: solid; border-collapse: collapse;">
+                    應用程式缺少程式碼根目錄。
+                </td>
+                <td style="margin: 5px 0; padding: 0 5px; border-width: 1px; border-style: solid; border-collapse: collapse;">
+                    請確認應用程式中包和了程式碼根目錄，通常是「java」、「src」或是「classes」。
+                </td>
+            </tr>
+            <tr>
+                <td style="margin: 5px 0; padding: 0 5px; border-width: 1px; border-style: solid; border-collapse: collapse;">
+                    -1113
+                </td>
+                <td style="margin: 5px 0; padding: 0 5px; border-width: 1px; border-style: solid; border-collapse: collapse;">
+                    應用程式的 「web.xml」檔案不存在。
+                </td>
+                <td style="margin: 5px 0; padding: 0 5px; border-width: 1px; border-style: solid; border-collapse: collapse;">
+                    請確認應用程式中含有「web.xml」檔案。
+                </td>
+            </tr>
+            <tr>
+                <td style="margin: 5px 0; padding: 0 5px; border-width: 1px; border-style: solid; border-collapse: collapse;">
+                    -1120
+                </td>
+                <td style="margin: 5px 0; padding: 0 5px; border-width: 1px; border-style: solid; border-collapse: collapse;">
+                    應用程式無法被建置。
+                </td>
+                <td style="margin: 5px 0; padding: 0 5px; border-width: 1px; border-style: solid; border-collapse: collapse;">
+                    請確認應用程式是否能夠建置。
+                </td>
+            </tr>
+            <tr>
+                <td style="margin: 5px 0; padding: 0 5px; border-width: 1px; border-style: solid; border-collapse: collapse;">
+                    -1121
+                </td>
+                <td style="margin: 5px 0; padding: 0 5px; border-width: 1px; border-style: solid; border-collapse: collapse;">
+                    應用程式無法被建置，因為 Java 或 Java 標籤檔案中的錯誤。
+                </td>
+                <td style="margin: 5px 0; padding: 0 5px; border-width: 1px; border-style: solid; border-collapse: collapse;">
+                    請確認應用程式是否能夠建置。
+                </td>
+            </tr>
+            <tr>
+                <td style="margin: 5px 0; padding: 0 5px; border-width: 1px; border-style: solid; border-collapse: collapse;">
+                    -1122
+                </td>
+                <td style="margin: 5px 0; padding: 0 5px; border-width: 1px; border-style: solid; border-collapse: collapse;">
+                    應用程式無法被建置，因為 Java 或 Java 標籤檔案中的錯誤，或是缺少 JAR 函式庫。
+                </td>
+                <td style="margin: 5px 0; padding: 0 5px; border-width: 1px; border-style: solid; border-collapse: collapse;">
+                    請確認應用程式是否能夠建置，以及所需要使用的 JAR 函式庫都已經存在。這個應用程式使用 Maven，使用 Maven 下載所需要的 JAR 函式庫並放置到「WEB-INF\lib」可能可以解決這個錯誤。
+                </td>
+            </tr>
+            <tr>
+                <td style="margin: 5px 0; padding: 0 5px; border-width: 1px; border-style: solid; border-collapse: collapse;">
+                    -1123
+                </td>
+                <td style="margin: 5px 0; padding: 0 5px; border-width: 1px; border-style: solid; border-collapse: collapse;">
+                    應用程式無法被建置，因為 JSP 檔案中的錯誤。
+                </td>
+                <td style="margin: 5px 0; padding: 0 5px; border-width: 1px; border-style: solid; border-collapse: collapse;">
+                    請確認應用程式是否能夠建置。
+                </td>
+            </tr>
+            <tr>
+                <td style="margin: 5px 0; padding: 0 5px; border-width: 1px; border-style: solid; border-collapse: collapse;">
+                    -1124
+                </td>
+                <td style="margin: 5px 0; padding: 0 5px; border-width: 1px; border-style: solid; border-collapse: collapse;">
+                    應用程式無法被建置，因為 JSP 檔案中的錯誤，或是缺少 JAR 函式庫。
+                </td>
+                <td style="margin: 5px 0; padding: 0 5px; border-width: 1px; border-style: solid; border-collapse: collapse;">
+                    請確認應用程式是否能夠建置，以及所需要使用的 JAR 函式庫都已經存在。這個應用程式使用 Maven，使用 Maven 下載所需要的 JAR 函式庫並放置到「WEB-INF\lib」可能可以解決這個錯誤。
+                </td>
+            </tr>
+            <tr>
+                <td style="margin: 5px 0; padding: 0 5px; border-width: 1px; border-style: solid; border-collapse: collapse;">
+                    -1125
+                </td>
+                <td style="margin: 5px 0; padding: 0 5px; border-width: 1px; border-style: solid; border-collapse: collapse;">
+                    應用程式無法被建置。
+                </td>
+                <td style="margin: 5px 0; padding: 0 5px; border-width: 1px; border-style: solid; border-collapse: collapse;">
+                    請確認應用程式是否能夠建置。
+                </td>
+            </tr>
+            <tr>
+                <td style="margin: 5px 0; padding: 0 5px; border-width: 1px; border-style: solid; border-collapse: collapse;">
+                    -1126
+                </td>
+                <td style="margin: 5px 0; padding: 0 5px; border-width: 1px; border-style: solid; border-collapse: collapse;">
+                    應用程式無法被建置，通常是因為無效的程式碼或是缺少 JAR 函式庫。
+                </td>
+                <td style="margin: 5px 0; padding: 0 5px; border-width: 1px; border-style: solid; border-collapse: collapse;">
+                    請確認應用程式是否能夠建置，以及所需要使用的 JAR 函式庫都已經存在。這個應用程式使用 Maven，使用 Maven 下載所需要的 JAR 函式庫並放置到「WEB-INF\lib」可能可以解決這個錯誤。
+                </td>
+            </tr>
+            <tr>
+                <td style="margin: 5px 0; padding: 0 5px; border-width: 1px; border-style: solid; border-collapse: collapse;">
+                    -1127
+                </td>
+                <td style="margin: 5px 0; padding: 0 5px; border-width: 1px; border-style: solid; border-collapse: collapse;">
+                    內部錯誤導致應用程式無法被建置。
+                </td>
+                <td style="margin: 5px 0; padding: 0 5px; border-width: 1px; border-style: solid; border-collapse: collapse;">
+                    請聯絡技術支援。
+                </td>
+            </tr>
+            <tr>
+                <td style="margin: 5px 0; padding: 0 5px; border-width: 1px; border-style: solid; border-collapse: collapse;">
+                    -1130
+                </td>
+                <td style="margin: 5px 0; padding: 0 5px; border-width: 1px; border-style: solid; border-collapse: collapse;">
+                    內部錯誤導致應用程式無法被建置。
+                </td>
+                <td style="margin: 5px 0; padding: 0 5px; border-width: 1px; border-style: solid; border-collapse: collapse;">
+                    請聯絡技術支援。
+                </td>
+            </tr>
+            <tr>
+                <td style="margin: 5px 0; padding: 0 5px; border-width: 1px; border-style: solid; border-collapse: collapse;">
+                    -1200
+                </td>
+                <td style="margin: 5px 0; padding: 0 5px; border-width: 1px; border-style: solid; border-collapse: collapse;">
+                    內部錯誤導致應用程式無法被建置。
+                </td>
+                <td style="margin: 5px 0; padding: 0 5px; border-width: 1px; border-style: solid; border-collapse: collapse;">
+                    請聯絡技術支援。
+                </td>
+            </tr>
+            <tr>
+                <td style="margin: 5px 0; padding: 0 5px; border-width: 1px; border-style: solid; border-collapse: collapse;">
+                    -1221
+                </td>
+                <td style="margin: 5px 0; padding: 0 5px; border-width: 1px; border-style: solid; border-collapse: collapse;">
+                    應用程式無法被建置。
+                </td>
+                <td style="margin: 5px 0; padding: 0 5px; border-width: 1px; border-style: solid; border-collapse: collapse;">
+                    請確認應用程式是否有錯誤的 PHP 語法。
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+
+<section class="bs-docs-section">
+    <h1 id="properties">
+        屬性
+    </h1>
+    <p>
+        文章編號：517718 – 上次校閱：2015 年 7 月 7 日 – 版次 1.1
+    </p>
+    <p>
+        <strong>適用於</strong>
+    </p>
+    <ul>
+        <li>
+            Lucent Sky AVM Enterprise 2
+        </li>
+        <li>
+            Lucent Sky AVM Standard 2
+        </li>
+        <li>
+            Lucent Sky AVM On-Demand
+        </li>
+    </ul>
+    <p>
+        <strong>關鍵字</strong>: kbtshoot kbtroubleshoot avm readinessevaluator KB517718
+    </p>
+</section>

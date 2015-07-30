@@ -1,0 +1,374 @@
+---
+layout: default
+title: Administration guide to Lucent Sky AVM server
+description: 
+permalink: /janet/306011.html
+---
+
+<section class="bs-docs-section">
+	<h1 id="introduction">
+		Introduction
+	</h1>
+	<p>
+		Lucent Sky AVM is a system that helps developers and other stakeholders identify and automatically mitigate vulnerabilities in an application's source code. Lucent Sky AVM has two server-side components, CLEAR Engine (the core analysis and mitigation engine) and Web UI. They're installed on the same server by default, but can also be installed on different computers. This guide covers the installation, configuration, administration and removal of Lucent Sky AVM server.
+	</p>
+</section>
+
+<section class="bs-docs-section">
+	<h1 id="more-information">
+		More Information
+	</h1>
+	<h2 id="prerequisites-for-administrators">
+		Prerequisites for Administrators
+	</h2>
+	<p>
+		Administrators should be familiar with the management and operation of the following systems and tools:
+	</p>
+	<ul>
+		<li>
+			<strong>Windows Communication Foundation (WCF)</strong>
+			<ul>
+				<li>
+					CLEAR Engine and all kinds of AVM interfaces communicate through WCF, via named pipes, TCP and optionally other WCF channels.
+				</li>
+			</ul>
+		</li>
+		<li>
+			<strong>Windows Server 2012 or Windows Server 2012 R2</strong>
+			<ul>
+				<li>
+					CLEAR Engine runs as a Windows Service and Web UI runs on Internet Information Services (IIS). You might need to change settings of Windows Firewall to allow communications between CLEAR Engine and various AVM interfaces.
+				</li>
+			</ul>
+		</li>
+	</ul>
+	<h2 id="system-requirements">
+		System Requirements
+	</h2>
+	<p>
+		The following requirements apply to CLEAR Engine:
+		<table>
+			<thead style="background-color: #c8c8c8;">
+				<tr>
+					<td style="margin: 5px 0; padding: 0 5px; border-width: 1px; border-style: solid; border-collapse: collapse;">
+						Components
+					</td>
+					<td style="margin: 5px 0; padding: 0 5px; border-width: 1px; border-style: solid; border-collapse: collapse;">
+						Requirement
+					</td>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td style="margin: 5px 0; padding: 0 5px; border-width: 1px; border-style: solid; border-collapse: collapse;">
+						.NET Framework
+					</td>
+					<td style="margin: 5px 0; padding: 0 5px; border-width: 1px; border-style: solid; border-collapse: collapse;">
+						.NET 3.5 SP1 and .NET 4.0
+					</td>
+				</tr>
+				<tr>
+					<td style="margin: 5px 0; padding: 0 5px; border-width: 1px; border-style: solid; border-collapse: collapse;">
+						Network Software
+					</td>
+					<td style="margin: 5px 0; padding: 0 5px; border-width: 1px; border-style: solid; border-collapse: collapse;">
+						Supported operating systems for CLEAR Server have built-in network software. CLEAR Server supports the following network protocols: Named pipe and TCP/IP.
+					</td>
+				</tr>
+				<tr>
+					<td style="margin: 5px 0; padding: 0 5px; border-width: 1px; border-style: solid; border-collapse: collapse;">
+						Virtualization
+					</td>
+					<td style="margin: 5px 0; padding: 0 5px; border-width: 1px; border-style: solid; border-collapse: collapse;">
+						Lucent Sky AVM server is supported in virtual machine environments running on Hyper-V. Support for virtual machine environments running on other hypervisor-based virtualization software is provided "as-is".
+					</td>
+				</tr>
+				<tr>
+					<td style="margin: 5px 0; padding: 0 5px; border-width: 1px; border-style: solid; border-collapse: collapse;">
+						Database
+					</td>
+					<td style="margin: 5px 0; padding: 0 5px; border-width: 1px; border-style: solid; border-collapse: collapse;">
+						SQL Server 2008 R2 or later. SQL Server 2012 Express is included in Lucent Sky AVM setup and can be installed along with Lucent Sky AVM server.
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</p>
+	<p>
+		The following requirements apply to Web UI:
+		<table>
+			<thead style="background-color: #c8c8c8;">
+				<tr>
+					<td style="margin: 5px 0; padding: 0 5px; border-width: 1px; border-style: solid; border-collapse: collapse;">
+						Components
+					</td>
+					<td style="margin: 5px 0; padding: 0 5px; border-width: 1px; border-style: solid; border-collapse: collapse;">
+						Requirement
+					</td>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td style="margin: 5px 0; padding: 0 5px; border-width: 1px; border-style: solid; border-collapse: collapse;">
+						.NET Framework
+					</td>
+					<td style="margin: 5px 0; padding: 0 5px; border-width: 1px; border-style: solid; border-collapse: collapse;">
+						.NET 4.0
+					</td>
+				</tr>
+				<tr>
+					<td style="margin: 5px 0; padding: 0 5px; border-width: 1px; border-style: solid; border-collapse: collapse;">
+						Web Server
+					</td>
+					<td style="margin: 5px 0; padding: 0 5px; border-width: 1px; border-style: solid; border-collapse: collapse;">
+						Internet Information Services 7.5 or later is required. IIS Express is not supported.
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</p>
+	<p>
+		Processor, memory, hard disk space and operating system requirements:
+		<table>
+			<thead style="background-color: #c8c8c8;">
+				<tr>
+					<td style="margin: 5px 0; padding: 0 5px; border-width: 1px; border-style: solid; border-collapse: collapse;">
+						Components
+					</td>
+					<td style="margin: 5px 0; padding: 0 5px; border-width: 1px; border-style: solid; border-collapse: collapse;">
+						Requirement
+					</td>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td style="margin: 5px 0; padding: 0 5px; border-width: 1px; border-style: solid; border-collapse: collapse;">
+						Hard Disk Space
+					</td>
+					<td style="margin: 5px 0; padding: 0 5px; border-width: 1px; border-style: solid; border-collapse: collapse;">
+						6 GB
+					</td>
+				</tr>
+				<tr>
+					<td style="margin: 5px 0; padding: 0 5px; border-width: 1px; border-style: solid; border-collapse: collapse;">
+						Memory
+					</td>
+					<td style="margin: 5px 0; padding: 0 5px; border-width: 1px; border-style: solid; border-collapse: collapse;">
+						Minimum: 2 GB
+						<br />
+						Recommended: 4 GB
+					</td>
+				</tr>
+				<tr>
+					<td style="margin: 5px 0; padding: 0 5px; border-width: 1px; border-style: solid; border-collapse: collapse;">
+						Processor
+					</td>
+					<td style="margin: 5px 0; padding: 0 5px; border-width: 1px; border-style: solid; border-collapse: collapse;">
+						Minimum: 1.4 GHz x64 processor
+						<br />
+						Recommended: 2.0 GHz x64 processor
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</p>
+	<p>
+		Lucent Sky AVM Server can be installed on the following operating systems:
+	</p>
+	<ul>
+		<li>
+			Windows Server 2012 or Windows Server 2012 R2 Datacenter and Standard
+		</li>
+		<li>
+			Windows Server 2008 R2 Datacenter, Enterprise and Standard with SP1
+		</li>
+	</ul>
+	<h2 id="installing-clear-engine-and-avm-web-ui">
+		Installing CLEAR Engine and Web UI
+	</h2>
+	<p>
+		In this section, you will see:
+	</p>
+	<ul>
+		<li>
+			A demonstration of how to install CLEAR Engine and Web UI on your server
+		</li>
+	</ul>
+	<p>
+		At the end of this section, you will be able to:
+	</p>
+	<ul>
+		<li>
+			Install CLEAR Engine on your server, and install and set up Microsoft SQL Server for it.
+		</li>
+		<li>
+			Install Web UI on your server, and set up Internet Information Services (IIS) for it.
+		</li>
+	</ul>
+	<p>
+		<strong>To install CLEAR Engine and Web UI</strong>
+	</p>
+	<ol>
+		<li>
+			Double-click on the Lucent Sky AVM server setup file (<strong>CLEAR_x64.exe</strong>). The file will automatically extract and create a <strong>CLEAR_x64</strong> folder at the location of your choice.
+		</li>
+		<li>
+			Open the folder and double-click the file Setup. The setup program will launch.
+			<ul>
+				<li>
+					<strong>Welcome</strong> – Click <strong>Next</strong>.
+				</li>
+				<li>
+					<strong>License</strong> – Review the end-user licensing agreement (EULA), and then click <strong>Agree</strong> if you agree the EULA, or click <strong>Decline</strong> to exit the setup program.
+				</li>
+				<li>
+					<strong>Activation</strong> – Enter the product key provided to you, and then click <strong>Activate License</strong>. If the server doesn't have Internet access, or you're re-running the setup program and have already activated a license, click <strong>Skip Activation</strong>.
+				</li>
+				<li>
+					<strong>Prerequisites</strong> – Make sure that .NET Framework 3.5, .NET Framework 4.0/4.5 and Internet Information Services (IIS) 7.0 or higher have been installed on the server. If you want to install and setup a new SQL Server Express instance for CLEAR Engine, click <strong>Install SQL Server</strong>. If you want to setup an existing SQL Server instance for CLEAR Engine, click <strong>Use Existing Database</strong>.
+					<ul>
+						<li>
+							<strong>Install SQL Server</strong> – Click <strong>Launch SQL Server Setup</strong> to launch the setup program of SQL Server Express. Follow the setup program to install SQL Server Express, and the setup parameters have been preconfigured so you should be able to accept the default configurations. When the installation is completed, go back to the AVM Server setup program, and then click <strong>Next</strong>.
+						</li>
+						<li>
+							<strong>Setup SQL Server</strong> – Enter the FQDN, IP address, or the computer name, and instance name in <strong>SQL Server</strong> (for example, <em>sqlserver.contoso.com\AVMSQL</em>, where <em>sqlserver.contoso.com</em> is the FQDN of the SQL Server, and <em>AVMSQL</em> is the instance name), select the security model, as well as username and password if necessary, and then click <strong>Next</strong>.
+						</li>
+					</ul>
+				</li>
+				<li>
+					<strong>Install CLEAR Engine</strong> – Accept the default location for storing application repository, or choose a custom location, and then click <strong>Next</strong>. The AVM Server setup program will become unresponsive for roughly 30 to 60 seconds during this process.
+				</li>
+				<li>
+					<strong>Install Web UI</strong> – To install Web UI on the same server, enter the FQDN or IP that users will be accessing Web UI through in <strong>Web UI FQDN</strong> or <strong>IP address</strong>, and then click <strong>Next</strong>. To install Web UI on another server or to skip its installation, click <strong>Skip</strong>.
+				</li>
+				<li>
+					<strong>Complete</strong> – The AVM Server setup has completed.
+				</li>
+			</ul>
+		</li>
+	</ol>
+	<p>
+		<strong>To configure Internet Information Services (IIS) for Web UI</strong>
+	</p>
+	<ol>
+		<li>
+			Open Internet Information Services (IIS) Manager. Under <strong>Connections</strong>, click the server that has Web UI installed. 
+		</li>
+		<li>
+			In <strong>Features View</strong>, double-click <strong>Server Certificates</strong>. For the SSL binding of Web UI, you can choose to use a self-signed certificate, to import an existing certificate, or to create a certificate request.
+			<ul>
+				<li>
+					<strong>Creating a self-signed certificate</strong> – Under <strong>Actions</strong>, click <strong>Create Self-Signed Certificate</strong>. In the <strong>Create Self-Signed Certificate</strong> dialog, enter a descriptive name for the certificate, for example, AVM Web UI.
+				</li>
+				<li>
+					<strong>Importing an existing certificate</strong> – Under <strong>Actions</strong>, click Import… and follow the on-screen instructions.
+				</li>
+				<li>
+					<strong>Creating a certificate request</strong> – Under <strong>Actions</strong>, click Create Certificate Request and follow the on-screen instructions.
+				</li>
+			</ul>
+		</li>
+		<li>
+			Under <strong>Connections</strong>, expand the server that has Web UI installed, expand Sites, right-click on <strong>CLEAR Web</strong>, and then select <strong>Edit Bindings…</strong> 
+		</li>
+		<li>
+			In the <strong>Site Bindings</strong> dialog, click <strong>Add…</strong> In the <strong>Add Site Binding</strong> dialog, select <strong>https</strong> in the <strong>Type</strong> drop-down list, change the <strong>Port</strong> if necessary, select the certificate created in step 2 in the SSL certificate drop-down list, and then click <strong>OK</strong>.
+		</li>
+		<li>
+			Select the http binding, and click <strong>Remove</strong>. Click <strong>Close</strong> to close the <strong>Site Bindings</strong> dialog.
+		</li>
+		<li>
+			Right-click on <strong>CLEAR Web</strong>, select <strong>Manage Website</strong>, and then click <strong>Start</strong>.
+		</li>
+	</ol>
+	<h2 id="starting-and-stopping-clear-engine">
+		Starting and Stopping CLEAR Engine
+	</h2>
+	<p>
+		CLEAR Engine should automatically start after the installation, and also starts with the operation system. In the rare case that it needs to be manually started, stopped or restarted, follow these steps:
+	</p>
+	<ul>
+		<li>
+			<strong>Starting CLEAR Engine</strong>: in Command Prompt or Windows PowerShell, type <strong>net start SkyAnalyzerEngine</strong>.
+		</li>
+		<li>
+			<strong>Stopping CLEAR Engine</strong>: In Command Prompt or Windows PowerShell, type <strong>net start SkyAnalyzerEngine</strong>.
+		</li>
+		<li>
+			<strong>Restarting CLEAR Engine</strong>: Stop CLEAR Engine, then start CLEAR Engine
+		</li>
+	</ul>
+	<h2 id="changing-the-license">
+		Changing the License
+	</h2>
+	<p>
+		To activate or deactivate the license installed
+	</p>
+	<ol>
+		<li>
+			Run <strong>CLEAR_x64.exe</strong>, extract the setup files to a local location (UNC is not supported), then run <strong>Setup.bat</strong>. This should launch the setup in maintenance mode. If not, run Setup.bat with the parameter -u (<strong>Setup.bat -u</strong>) to launch the setup in maintenance mode.
+			<ul>
+				<li>
+					<strong>Installing a new license</strong>: Click <strong>Activate License</strong>. In the pop-up dialog, enter the product key, and then click <strong>OK</strong>.
+				</li>
+				<li>
+					<strong>Creating an activation request</strong>: Click <strong>Activate License Offline</strong>. In the pop-up dialog asking if you have received a license file, click <strong>No</strong>. Enter the product key, click <strong>OK</strong>. Then in the Save File dialog, save the request file to a temporary location (such as Desktop).
+				</li>
+				<li>
+					<strong>Completing an activation request</strong>: Click <strong>Activate License Offline</strong>. In the pop-up dialog asking if you have received a license file, click <strong>Yes</strong>. In the Open File dialog, open the license file you received from Lucent Sky support.
+				</li>
+				<li>
+					<strong>Uninstalling the current license</strong>: Click <strong>Deactivate License</strong>.
+				</li>
+			</ul>
+		</li>
+	</ol>
+	<h2 id="uninstalling-avm-server">
+		Uninstalling AVM Server
+	</h2>
+	<p>
+		To uninstall CLEAR Engine or Web UI from the server
+	</p>
+	<ol>
+		<li>
+			Run <strong>CLEAR_x64.exe,</strong> extract the setup files to a local location (UNC is not supported), then run <strong>Setup.bat</strong>. This should launch the setup in maintenance mode. If not, run Setup.bat with the parameter -u (<strong>Setup.bat –u</strong>) to launch the setup in maintenance mode.
+			<ul>
+				<li>
+					<strong>Uninstalling CLEAR Engine</strong>: Click Remove CLEAR Engine. This will remove the Windows service. To remove CLEAR Engine and its data completely from the system, manually delete the directory <strong>C:\Program Files\Lucent Sky\CLEAR Engine</strong>, the directory used for repository storage, and the database SkyAnalyzer from SQL Server.
+				</li>
+				<li>
+					<strong>Uninstalling Web UI</strong>: Click Remove Web UI. This will remove the IIS Application Pool and Site. To remove CLEAR Web and its data completely from the system, manually delete the directory <strong>C:\Program Files\Lucent Sky\CLEAR Web</strong>.
+				</li>
+			</ul>
+		</li>
+	</ol>
+</section>
+
+<section class="bs-docs-section">
+	<h1 id="properties">
+		Properties
+	</h1>
+	<p>
+		Article ID: 306011 – Last Reviewed: May 31, 2015 – Revision 1.1
+	</p>
+	<p>
+		<strong>Applies to</strong>
+	</p>
+	<ul>
+		<li>
+			Lucent Sky AVM Enterprise 2
+		</li>
+		<li>
+			Lucent Sky AVM Standard 2
+		</li>
+		<li>
+			Lucent Sky AVM Enterprise 1
+		</li>
+		<li>
+			Lucent Sky AVM Standard 1
+		</li>
+	</ul>
+	<p>
+		<strong>Keywords</strong>: kbguide avm administrative KB306011
+	</p>
+</section>

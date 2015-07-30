@@ -1,0 +1,176 @@
+---
+layout: default
+title: Administration guide to Lucent Sky AVM CLI
+description: 
+permalink: /en/kb/448674.html
+---
+
+<section class="bs-docs-section">
+    <h1 id="introduction">
+        Introduction
+    </h1>
+    <p>
+        Lucent Sky AVM has several different UIs designed for developers, including CLI, Visual Studio Extension and Eclipse plug-in. Lucent Sky AVM CLI is a command line application that provides access to AVM Server in a console environment, allowing developers to integrate the identification and mitigation of security issues into existing software development or DevOps lifecycles. This guide convers the installation, configuration and uninstallation of Lucent Sky AVM CLI.
+    </p>
+</section>
+
+<section class="bs-docs-section">
+    <h1 id="more-information">
+        More Information
+    </h1>
+    <h2 id="system-requirements">
+        System Requirements
+    </h2>
+    <p>
+        Processor, memory, hard disk space and operating system requirements:
+        <table>
+            <thead style="background-color: #c8c8c8;">
+                <tr>
+                    <td style="margin: 5px 0; padding: 0 5px; border-width: 1px; border-style: solid; border-collapse: collapse;">
+                        Components
+                    </td>
+                    <td style="margin: 5px 0; padding: 0 5px; border-width: 1px; border-style: solid; border-collapse: collapse;">
+                        Requirement
+                    </td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td style="margin: 5px 0; padding: 0 5px; border-width: 1px; border-style: solid; border-collapse: collapse;">
+                        Hard Disk Space
+                    </td>
+                    <td style="margin: 5px 0; padding: 0 5px; border-width: 1px; border-style: solid; border-collapse: collapse;">
+                        40 MB
+                    </td>
+                </tr>
+                <tr>
+                    <td style="margin: 5px 0; padding: 0 5px; border-width: 1px; border-style: solid; border-collapse: collapse;">
+                        Memory
+                    </td>
+                    <td style="margin: 5px 0; padding: 0 5px; border-width: 1px; border-style: solid; border-collapse: collapse;">
+                        Minimum: 1 GB (1.5 GB if running inside a virtual machine)
+                        <br />
+                        Recommended: 2 GB
+                    </td>
+                </tr>
+                <tr>
+                    <td style="margin: 5px 0; padding: 0 5px; border-width: 1px; border-style: solid; border-collapse: collapse;">
+                        Processor
+                    </td>
+                    <td style="margin: 5px 0; padding: 0 5px; border-width: 1px; border-style: solid; border-collapse: collapse;">
+                        Minimum: 1.6 GHz processor
+                        <br />
+                        Recommended: 2.0 GHz processor
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </p>
+    <p>
+        Lucent Sky AVM CLI can be installed on the following operating systems:
+    </p>
+    <ul>
+        <li>
+            Windows Server 2008 R2 with SP1 and later
+        </li>
+        <li>
+            Windows 7 with SP1 and later
+        </li>
+    </ul>
+    <p>
+        Lucent Sky AVM CLI can be installed on the following operating systems through Mono:
+    </p>
+    <ul>
+        <li>
+            Mac OS X 10.3 and later
+        </li>
+        <li>
+            OpenSUSE 13.1 and later
+        </li>
+        <li>
+            Ubuntu 10.04 and later
+        </li>
+    </ul>
+    <p>
+        Lucent Sky AVM CLI might work on other operating systems through Mono as well, but these scenarios are not supported.
+    </p>
+    <h2 id="installing-lucent-sky-avm-cli">
+        Installing Lucent Sky AVM CLI
+    </h2>
+    <p>
+        In this section, you will see:
+    </p>
+    <ul>
+        <li>
+            A demonstration of installing Lucent Sky AVM CLI on your development computer and configure it to communicate with a Lucent Sky AVM server.
+        </li>
+    </ul>
+    <p>
+        At the end of this section, you will be able to:
+    </p>
+    <ul>
+        <li>
+            Install Lucent Sky AVM CLI on your development computer.
+        </li>
+        <li>
+            Configure Lucent Sky AVM CLI to communicate with a Lucent Sky AVM server.
+        </li>
+    </ul>
+    <p>
+        <strong>To install and configure AVM CLI</strong>
+    </p>
+    <ol>
+        <li>
+            Double click on the AVM CLI setup file (<strong>CLEAR_CLI.exe</strong>). The file will automatically extract and create a <strong>CLEAR CLI</strong> folder at <strong>C:\Program Files\Lucent Sky\CLEAR CLI</strong> (or the location you chose during the extraction process).
+        </li>
+        <li>
+            Navigate to <strong>C:\Program Files\Lucent Sky\CLEAR CLI</strong> (or the location you chose during the extraction process). Open <strong>SkyAnalyzer.Interface.Console.exe</strong> with a text editor.
+        </li>
+        <li>
+            Replace all occurrences of <strong>clear.contoso.com</strong> with the FQDN, IP address or computer name of a Lucent Sky AVM server, and then save and close the file.
+        </li>
+    </ol>
+    <p>
+        In the default configuration, the communication between Lucent Sky AVM server and Lucent Sky AVM CLI is not secured. Consult with your system administrator about how to enable transport and/or message security on WCF TCP endpoints.
+    </p>
+    <h2 id="uninstalling-lucent-sky-avm-cli">
+        Uninstalling Lucent Sky AVM CLI
+    </h2>
+    <p>
+        <strong>To uninstall AVM Visual Studio Extension</strong>
+    </p>
+    <ol>
+        <li>
+            Remove the directory <strong>C:\Program Files\Lucent Sky\CLEAR CLI</strong> (or the location you chose during the extraction process).
+        </li>
+    </ol>
+</section>
+
+<section class="bs-docs-section">
+    <h1 id="properties">
+        Properties
+    </h1>
+    <p>
+        Article ID: 448674 – Last Reviewed: May 31, 2015 – Revision 1.1
+    </p>
+    <p>
+        <strong>Applies to</strong>
+    </p>
+    <ul>
+        <li>
+            Lucent Sky AVM Enterprise 2
+        </li>
+        <li>
+            Lucent Sky AVM Standard 2
+        </li>
+        <li>
+            Lucent Sky AVM Enterprise 1
+        </li>
+        <li>
+            Lucent Sky AVM Standard 1
+        </li>
+    </ul>
+    <p>
+        <strong>Keywords</strong>: kbguide avm administrative cli KB448674
+    </p>
+</section>

@@ -1,0 +1,664 @@
+---
+layout: default
+title: Getting Started with Lucent Sky AVM - Using CLI
+description: 
+permalink: /en/kb/513289.html
+---
+
+<section class="bs-docs-section">
+    <h1 id="introduction">
+        Introduction
+    </h1>
+    <p>
+        Lucent Sky AVM is a system that helps developers and other stakeholders identify and automatically mitigate vulnerabilities in an application's source code. Lucent Sky AVM is composed of three components, CLEAR Engine (the core analysis and mitigation engine), Web UI, and Developer UIs. The Developer UIs include CLI, Visual Studio Extension and Eclipse plug-in.
+    </p>
+</section>
+
+<section class="bs-docs-section">
+    <h1 id="more-information">
+        More Information
+    </h1>
+    <h2 id="prerequisites-for-developers">
+        Prerequisites for Developers
+    </h2>
+    <p>
+        Developers should be familiar with the following tools:
+    </p>
+    <ul>
+        <li>
+            <strong>C#, Java or VB.NET languages</strong>
+            <ul>
+                <li>
+                    This guide uses C# (which has a similar syntax with Java and VB.NET) in its examples and screenshots.
+                </li>
+            </ul>
+        </li>
+        <li>
+            <strong>Bash, Command Prompt or Windows PowerShell</strong>
+        </li>
+    </ul>
+    <h2 id="using-cli">
+        Using CLI
+    </h2>
+    <p>
+        In this section, you will see:
+    </p>
+    <ul>
+        <li>
+            A demonstration of how to install and configure Lucent Sky AVM CLI
+        </li>
+        <li>
+            A sample procedure for analyzing and mitigating an application with the Lucent Sky AVM CLI
+        </li>
+    </ul>
+    <p>
+        At the end of this section, you will be able to:
+    </p>
+    <ul>
+        <li>
+            Install and configure CLI on a development machine
+        </li>
+        <li>
+            Use CLI to scan an application for vulnerabilities and automatically fixing them
+        </li>
+        <li>
+            Download the secured source code of an application from the Lucent Sky AVM CLI
+        </li>
+        <li>
+            Download the security report of an application from the Lucent Sky AVM CLI
+        </li>
+    </ul>
+    <p>
+        <strong>To install and configure AVM CLI</strong>
+    </p>
+    <ol>
+        <li>
+            Double click on the Lucent Sky AVM CLI setup file (<strong>CLEAR_CLI.exe</strong>). The file will automatically extract and create a <strong>CLEAR_CLI</strong> folder at <strong>C:\Program Files\Lucent Sky\CLEAR CLI</strong> (or the location you chose during the extraction process).
+        </li>
+        <li>
+            Navigate to <strong>C:\Program Files\Lucent Sky\CLEAR CLI</strong> (or the location you chose during the extraction process). Open <strong>SkyAnalyzer.Interface.Console.exe</strong> with a text editor.
+        </li>
+        <li>
+            Replace all occurrences of <strong>clear.contoso.com</strong> with the FQDN, IP address or computer name of an AVM Server, and then save and close the file.
+        </li>
+    </ol>
+    <p>
+        The default configuration makes AVM CLI communicate with an AVM Server using insecure channels. To learn more about how to secure the communication between AVM Server and AVM CLI, click the following article number to view the article in the Lucent Sky Knowledge Base:
+        <br />
+        &nbsp;&nbsp;&nbsp;&nbsp;<a href="448674">KB448674</a> Administration of Lucent Sky AVM CLI</a>
+    </p>
+    <p>
+        <strong>To analyze and mitigate the vulnerabilities in an application using Lucent Sky AVM CLI</strong>
+    </p>
+    <p>
+        Lucent Sky AVM CLI has three sets of functions: tools, application and scan. They're the content of Lucent Sky AVM CLI's argument interface. Below is the detail about these sets of functions.
+    </p>
+    <ul>
+        <li>
+            <strong>Tools</strong>
+            <br />
+            Enter the following in Command Prompt:
+            <br />
+            <table>
+                <tbody>
+                    <tr>
+                        <td style="margin: 5px 0; padding: 0 5px; border-width: 1px; border-style: solid; border-collapse: collapse;">
+                            <span style="font-family: Consolas">SkyAnalyzer.Interface.Console.exe --interface tools [--method][--value]</span>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <ul>
+                <li>
+                    Methods:
+                    <table>
+                        <thead style="background-color: #c8c8c8;">
+                            <tr>
+                                <td style="margin: 5px 0; padding: 0 5px; border-width: 1px; border-style: solid; border-collapse: collapse;">
+                                    Method
+                                </td>
+                                <td style="margin: 5px 0; padding: 0 5px; border-width: 1px; border-style: solid; border-collapse: collapse;">
+                                    Description
+                                </td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td style="margin: 5px 0; padding: 0 5px; border-width: 1px; border-style: solid; border-collapse: collapse;">
+                                    base64encode
+                                </td>
+                                <td style="margin: 5px 0; padding: 0 5px; border-width: 1px; border-style: solid; border-collapse: collapse;">
+                                    Obtain the base64 encoded value of the user credentials. Use with argument <strong>value</strong>.
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </li>
+                <li>
+                    Arguments:
+                    <table>
+                        <thead style="background-color: #c8c8c8;">
+                            <tr>
+                                <td style="margin: 5px 0; padding: 0 5px; border-width: 1px; border-style: solid; border-collapse: collapse;">
+                                    Option
+                                </td>
+                                <td style="margin: 5px 0; padding: 0 5px; border-width: 1px; border-style: solid; border-collapse: collapse;">
+                                    Description
+                                </td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td style="margin: 5px 0; padding: 0 5px; border-width: 1px; border-style: solid; border-collapse: collapse;">
+                                    --value
+                                </td>
+                                <td style="margin: 5px 0; padding: 0 5px; border-width: 1px; border-style: solid; border-collapse: collapse;">
+                                    Required argument for method <strong>base64encode</strong>.
+                                    <br />
+                                    The format is "Email Password AccountType". Use <strong>Sql</strong> as AccountType for built-in accounts; <strong>ActiveDirectory</strong> for organizational accounts.
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </li>
+                <li>
+                    Example:
+                    <br />
+                    The command below will generate the base64 encoded string of the built-in account <em>alice@contoso.com</em> with the password <em>password</em>:
+                    <table>
+                        <tbody>
+                            <tr>
+                                <td style="margin: 5px 0; padding: 0 5px; border-width: 1px; border-style: solid; border-collapse: collapse;">
+                                    <span style="font-family: Consolas">SkyAnalyzer.Interface.Console.exe --interface tools --method base64encode --value "<em>alice@contoso.com password Sql</em>"</span>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <strong>Application</strong>
+            <br />
+            Enter the following in Command Prompt:
+            <br />
+            <table>
+                <tbody>
+                    <tr>
+                        <td style="margin: 5px 0; padding: 0 5px; border-width: 1px; border-style: solid; border-collapse: collapse;">
+                            <span style="font-family: Consolas">SkyAnalyzer.Interface.Console.exe [--credential] --interface tools [--method][--applicationid][option [--applicationname][--applicationframework][-- applicationmitigaterules][--applicationidentificationrules][--applicationvectors]]</span>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <ul>
+                <li>
+                    Methods:
+                    <table>
+                        <thead style="background-color: #c8c8c8;">
+                            <tr>
+                                <td style="margin: 5px 0; padding: 0 5px; border-width: 1px; border-style: solid; border-collapse: collapse;">
+                                    Method
+                                </td>
+                                <td style="margin: 5px 0; padding: 0 5px; border-width: 1px; border-style: solid; border-collapse: collapse;">
+                                    Description
+                                </td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td style="margin: 5px 0; padding: 0 5px; border-width: 1px; border-style: solid; border-collapse: collapse;">
+                                    create
+                                </td>
+                                <td style="margin: 5px 0; padding: 0 5px; border-width: 1px; border-style: solid; border-collapse: collapse;">
+                                    Create a new application.
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="margin: 5px 0; padding: 0 5px; border-width: 1px; border-style: solid; border-collapse: collapse;">
+                                    delete
+                                </td>
+                                <td style="margin: 5px 0; padding: 0 5px; border-width: 1px; border-style: solid; border-collapse: collapse;">
+                                    Delete an existing application.
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </li>
+                <li>
+                    Arguments:
+                    <table>
+                        <thead style="background-color: #c8c8c8;">
+                            <tr>
+                                <td style="margin: 5px 0; padding: 0 5px; border-width: 1px; border-style: solid; border-collapse: collapse;">
+                                    Option
+                                </td>
+                                <td style="margin: 5px 0; padding: 0 5px; border-width: 1px; border-style: solid; border-collapse: collapse;">
+                                    Description
+                                </td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td style="margin: 5px 0; padding: 0 5px; border-width: 1px; border-style: solid; border-collapse: collapse;">
+                                    --credential
+                                </td>
+                                <td style="margin: 5px 0; padding: 0 5px; border-width: 1px; border-style: solid; border-collapse: collapse;">
+                                    Base64 encoded credentials. You can learn more about generating base64 encoded credentials in the Tools section.
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="margin: 5px 0; padding: 0 5px; border-width: 1px; border-style: solid; border-collapse: collapse;">
+                                    --applicationid
+                                </td>
+                                <td style="margin: 5px 0; padding: 0 5px; border-width: 1px; border-style: solid; border-collapse: collapse;">
+                                    The GUID of the application on AVM. AVM will use this GUID to identify the application.
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="margin: 5px 0; padding: 0 5px; border-width: 1px; border-style: solid; border-collapse: collapse;">
+                                    --applicationname
+                                </td>
+                                <td style="margin: 5px 0; padding: 0 5px; border-width: 1px; border-style: solid; border-collapse: collapse;">
+                                    Required argument for method <strong>create</strong>.
+                                    <br />
+                                    The name of the application to be created.
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="margin: 5px 0; padding: 0 5px; border-width: 1px; border-style: solid; border-collapse: collapse;">
+                                    --applicationframework
+                                </td>
+                                <td style="margin: 5px 0; padding: 0 5px; border-width: 1px; border-style: solid; border-collapse: collapse;">
+                                    Required argument for method <strong>create</strong>.
+                                    <br />
+                                    The framework of the application. Frameworks supported are DotNet, Java and PHP.
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="margin: 5px 0; padding: 0 5px; border-width: 1px; border-style: solid; border-collapse: collapse;">
+                                    --applicationidentificationrules
+                                </td>
+                                <td style="margin: 5px 0; padding: 0 5px; border-width: 1px; border-style: solid; border-collapse: collapse;">
+                                    Optional argument for method <strong>create</strong>.
+                                    <br />
+                                    The types of vulnerabilities to identify, separated by commas. For example, <strong>CWE79,CWE89,CWE90</strong>. If this argument is not present, identification will be enabled on all types.
+                                    <br />
+                                    This argument must be used with the argument <strong>applicationmitigaterules</strong>. Also, rules in argument <strong>applicationmitigaterules</strong> must also exist in this argument.
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="margin: 5px 0; padding: 0 5px; border-width: 1px; border-style: solid; border-collapse: collapse;">
+                                    --applicationmitigaterules
+                                </td>
+                                <td style="margin: 5px 0; padding: 0 5px; border-width: 1px; border-style: solid; border-collapse: collapse;">
+                                    Optional argument for method <strong>create</strong>.
+                                    <br />
+                                    The types of vulnerabilities to mitigate, separated by commas. For example, <strong>CWE89,CWE90</strong>. If this argument is not present, mitigation will be enabled on all types.
+                                    <br />
+                                    This argument must be used with the argument <strong>applicationidentificationrules</strong>. Also, rules in this argument must also exist in argument <strong>applicationidentificationrules</strong>.
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="margin: 5px 0; padding: 0 5px; border-width: 1px; border-style: solid; border-collapse: collapse;">
+                                    --applicationvectors
+                                </td>
+                                <td style="margin: 5px 0; padding: 0 5px; border-width: 1px; border-style: solid; border-collapse: collapse;">
+                                    Optional argument for method <strong>create</strong>.
+                                    <br />
+                                    The types of vectors considered potentially dangerous, separated by commas. For example, <strong>Database,WebRequest</strong>. If this argument is not present, all vectors will be considered potentially dangerous.
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </li>
+                <li>
+                    Example:
+                    <br />
+                    The command below will create a <em>DotNet</em> (.NET) application named <em>ContosoWeb</em>, with the application ID <em>AAAAAAAA-AAAA-AAAA-AAAA-AAAAAAAAAAAA</em>. Rules <em>CWE79, CWE89 and CWE90</em> are enabled for identification, with <em>CWE89 and CWE90</em> enabled for mitigation. <em>Database</em> and <em>WebRequest</em> are the only vectors considered potentially dangerous. <em>k2FsaWNlQGNvbnRvc28uY29t</em> is the base64 encoded string of the built-in account <em>alice@contoso.com</em> with the password <em>password</em>:
+                    <table>
+                        <tbody>
+                            <tr>
+                                <td style="margin: 5px 0; padding: 0 5px; border-width: 1px; border-style: solid; border-collapse: collapse;">
+                                    <span style="font-family: Consolas">SkyAnalyzer.Interface.Console.exe --credential <em>k2FsaWNlQGNvbnRvc28uY29t</em> --interface application --method create --applicationname "<em>ContosoWeb</em>" --applicationframework <em>DotNet</em> --applicationid "<em>AAAAAAAA-AAAA-AAAA-AAAA-AAAAAAAAAAAA</em>" --applicationmitigaterules "<em>CWE89,CWE90</em>" --applicationidentificationrules "<em>CWE79,CWE89,CWE90</em>" --applicationvectors "<em>Database,WebRequest</em>"</span>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <br />
+                    The command below will delete the application with the application ID <em>AAAAAAAA-AAAA-AAAA-AAAA-AAAAAAAAAAAA</em>.
+                    <table>
+                        <tbody>
+                            <tr>
+                                <td style="margin: 5px 0; padding: 0 5px; border-width: 1px; border-style: solid; border-collapse: collapse;">
+                                    <span style="font-family: Consolas">SkyAnalyzer.Interface.Console.exe --credential <em>k2FsaWNlQGNvbnRvc28uY29t</em> --interface application --method delete --applicationid "<em>AAAAAAAA-AAAA-AAAA-AAAA-AAAAAAAAAAAA</em>"</span>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <strong>Scan</strong>
+            <br />
+            Enter the following in Command Prompt:
+            <br />
+            <table>
+                <tbody>
+                    <tr>
+                        <td style="margin: 5px 0; padding: 0 5px; border-width: 1px; border-style: solid; border-collapse: collapse;">
+                            <span style="font-family: Consolas">SkyAnalyzer.Interface.Console.exe [--credential] --interface tools [--method][--applicationid][option [--applicationname][--applicationframework][-- applicationmitigaterules][--applicationidentificationrules][--applicationvectors]]</span>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <ul>
+                <li>
+                    Methods:
+                    <table>
+                        <thead style="background-color: #c8c8c8;">
+                            <tr>
+                                <td style="margin: 5px 0; padding: 0 5px; border-width: 1px; border-style: solid; border-collapse: collapse;">
+                                    Method
+                                </td>
+                                <td style="margin: 5px 0; padding: 0 5px; border-width: 1px; border-style: solid; border-collapse: collapse;">
+                                    Description
+                                </td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td style="margin: 5px 0; padding: 0 5px; border-width: 1px; border-style: solid; border-collapse: collapse;">
+                                    create
+                                </td>
+                                <td style="margin: 5px 0; padding: 0 5px; border-width: 1px; border-style: solid; border-collapse: collapse;">
+                                    Create a new scan.
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="margin: 5px 0; padding: 0 5px; border-width: 1px; border-style: solid; border-collapse: collapse;">
+                                    analyze
+                                </td>
+                                <td style="margin: 5px 0; padding: 0 5px; border-width: 1px; border-style: solid; border-collapse: collapse;">
+                                    Upload the source code archive and start the analysis.
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="margin: 5px 0; padding: 0 5px; border-width: 1px; border-style: solid; border-collapse: collapse;">
+                                    status
+                                </td>
+                                <td style="margin: 5px 0; padding: 0 5px; border-width: 1px; border-style: solid; border-collapse: collapse;">
+                                    Check if the scan has completed. <strong>True</strong> if the scan has completed (even if the scan has failed), <strong>False</strong> if the scan is ongoing.
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="margin: 5px 0; padding: 0 5px; border-width: 1px; border-style: solid; border-collapse: collapse;">
+                                    mitigate
+                                </td>
+                                <td style="margin: 5px 0; padding: 0 5px; border-width: 1px; border-style: solid; border-collapse: collapse;">
+                                    Download the secured source code of a completed scan.
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="margin: 5px 0; padding: 0 5px; border-width: 1px; border-style: solid; border-collapse: collapse;">
+                                    report
+                                </td>
+                                <td style="margin: 5px 0; padding: 0 5px; border-width: 1px; border-style: solid; border-collapse: collapse;">
+                                    Download the security report of a completed scan.
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="margin: 5px 0; padding: 0 5px; border-width: 1px; border-style: solid; border-collapse: collapse;">
+                                    delete
+                                </td>
+                                <td style="margin: 5px 0; padding: 0 5px; border-width: 1px; border-style: solid; border-collapse: collapse;">
+                                    Delete an existing scan.
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </li>
+                <li>
+                    Arguments:
+                    <table>
+                        <thead style="background-color: #c8c8c8;">
+                            <tr>
+                                <td style="margin: 5px 0; padding: 0 5px; border-width: 1px; border-style: solid; border-collapse: collapse;">
+                                    Option
+                                </td>
+                                <td style="margin: 5px 0; padding: 0 5px; border-width: 1px; border-style: solid; border-collapse: collapse;">
+                                    Description
+                                </td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td style="margin: 5px 0; padding: 0 5px; border-width: 1px; border-style: solid; border-collapse: collapse;">
+                                    --credential
+                                </td>
+                                <td style="margin: 5px 0; padding: 0 5px; border-width: 1px; border-style: solid; border-collapse: collapse;">
+                                    Base64 encoded credentials. You can learn more about generating base64 encoded credentials in the Tools section.
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="margin: 5px 0; padding: 0 5px; border-width: 1px; border-style: solid; border-collapse: collapse;">
+                                    --scanid
+                                </td>
+                                <td style="margin: 5px 0; padding: 0 5px; border-width: 1px; border-style: solid; border-collapse: collapse;">
+                                    The GUID of the scan on AVM. AVM will use this GUID to identify the scan.
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="margin: 5px 0; padding: 0 5px; border-width: 1px; border-style: solid; border-collapse: collapse;">
+                                    --applicationid
+                                </td>
+                                <td style="margin: 5px 0; padding: 0 5px; border-width: 1px; border-style: solid; border-collapse: collapse;">
+                                    Required argument for method <strong>create</strong>.
+                                    <br />
+                                    The GUID of the application on AVM. AVM will use this GUID to identify the application.
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="margin: 5px 0; padding: 0 5px; border-width: 1px; border-style: solid; border-collapse: collapse;">
+                                    --scanidentificationrules
+                                </td>
+                                <td style="margin: 5px 0; padding: 0 5px; border-width: 1px; border-style: solid; border-collapse: collapse;">
+                                    Optional argument for method <strong>create</strong>.
+                                    <br />
+                                    The types of vulnerabilities to identify, separated by commas. For example, <strong>CWE79,CWE89,CWE90</strong>. If this argument is not present, settings from application will be used.
+                                    <br />
+                                    This argument must be used with the argument <strong>scanmitigaterules</strong>. Also, rules in argument <strong>scanmitigaterules</strong> must also exist in this argument.
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="margin: 5px 0; padding: 0 5px; border-width: 1px; border-style: solid; border-collapse: collapse;">
+                                    --scanmitigaterules
+                                </td>
+                                <td style="margin: 5px 0; padding: 0 5px; border-width: 1px; border-style: solid; border-collapse: collapse;">
+                                    Optional argument for method <strong>create</strong>.
+                                    <br />
+                                    The types of vulnerabilities to mitigate, separated by commas. For example, <strong>CWE89,CWE90</strong>. If this argument is not present, settings from application will be used.
+                                    <br />
+                                    This argument must be used with the argument <strong>scanidentificationrules</strong>. Also, rules in this argument must also exist in argument <strong>scanidentificationrules</strong>.
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="margin: 5px 0; padding: 0 5px; border-width: 1px; border-style: solid; border-collapse: collapse;">
+                                    --scanvectors
+                                </td>
+                                <td style="margin: 5px 0; padding: 0 5px; border-width: 1px; border-style: solid; border-collapse: collapse;">
+                                    Optional argument for method <strong>create</strong>.
+                                    <br />
+                                    The types of vectors considered potentially dangerous, separated by commas. For example, <strong>Database,WebRequest</strong>. If this argument is not present, settings from application will be used.
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="margin: 5px 0; padding: 0 5px; border-width: 1px; border-style: solid; border-collapse: collapse;">
+                                    --sourcecodearchive
+                                </td>
+                                <td style="margin: 5px 0; padding: 0 5px; border-width: 1px; border-style: solid; border-collapse: collapse;">
+                                    Required argument for method <strong>analyze</strong>.
+                                    <br />
+                                    The path of the source code archive. For example, <strong>C:\Source.zip</strong>.
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="margin: 5px 0; padding: 0 5px; border-width: 1px; border-style: solid; border-collapse: collapse;">
+                                    --securedsourcecodearchive
+                                </td>
+                                <td style="margin: 5px 0; padding: 0 5px; border-width: 1px; border-style: solid; border-collapse: collapse;">
+                                    Required argument for method <strong>mitigate</strong>.
+                                    <br />
+                                    The download path of the secured source code archive.
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="margin: 5px 0; padding: 0 5px; border-width: 1px; border-style: solid; border-collapse: collapse;">
+                                    --scanmitigationoption
+                                </td>
+                                <td style="margin: 5px 0; padding: 0 5px; border-width: 1px; border-style: solid; border-collapse: collapse;">
+                                    Required argument for method <strong>mitigate</strong>.
+                                    Supported values are:
+                                    <br />
+                                    <strong>1</strong>: including mitigation information
+                                    <br />
+                                    <strong>2</strong>: including original source code
+                                    <br />
+                                    <strong>3</strong>: including mitigation information and original source code
+                                    <br />
+                                    If this argument is not present, no mitigation information and original source code are included.
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="margin: 5px 0; padding: 0 5px; border-width: 1px; border-style: solid; border-collapse: collapse;">
+                                    --report
+                                </td>
+                                <td style="margin: 5px 0; padding: 0 5px; border-width: 1px; border-style: solid; border-collapse: collapse;">
+                                    Required argument for method <strong>report</strong>.
+                                    <br />
+                                    The download path of the security report.
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="margin: 5px 0; padding: 0 5px; border-width: 1px; border-style: solid; border-collapse: collapse;">
+                                    --reportformat
+                                </td>
+                                <td style="margin: 5px 0; padding: 0 5px; border-width: 1px; border-style: solid; border-collapse: collapse;">
+                                    Required argument for method <strong>report</strong>.
+                                    <br />
+                                    The format of the report. Supported values are <strong>html</strong> and <strong>xml</strong>.
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </li>
+                <li>
+                    Example:
+                    <br />
+                    The command below will create a scan with scan ID <em>55555555-5555-5555-5555-555555555555</em> under the application with application ID <em>AAAAAAAA-AAAA-AAAA-AAAA-AAAAAAAAAAAA</em>. Rules <em>CWE79</em> and <em>CWE89</em> are enabled for identification, with <em>CWE89</em> enabled for mitigation. <em>Database</em> is the only vector considered potentially dangerous. <em>k2FsaWNlQGNvbnRvc28uY29t</em> is the base64 encoded string of the built-in account <em>alice@contoso.com</em> with the password <em>password</em>:
+                    <table>
+                        <tbody>
+                            <tr>
+                                <td style="margin: 5px 0; padding: 0 5px; border-width: 1px; border-style: solid; border-collapse: collapse;">
+                                    <span style="font-family: Consolas">SkyAnalyzer.Interface.Console.exe --credential <em>k2FsaWNlQGNvbnRvc28uY29t</em> --interface scan --method create --applicationid "<em>AAAAAAAA-AAAA-AAAA-AAAA-AAAAAAAAAAAA</em>" --scanid "<em>55555555-5555-5555-5555-555555555555</em>" --scanmitigaterules "<em>CWE89</em>" --scanidentificationrules "<em>CWE79, CWE89</em>" --scanvectors "<em>Database</em>"</span>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <br />
+                    The command below will upload the source code archive at <em>C:\Source.zip</em> to the scan with scan ID <em>55555555-5555-5555-5555-555555555555</em> and start the analysis.
+                    <table>
+                        <tbody>
+                            <tr>
+                                <td style="margin: 5px 0; padding: 0 5px; border-width: 1px; border-style: solid; border-collapse: collapse;">
+                                    <span style="font-family: Consolas">SkyAnalyzer.Interface.Console.exe --credential <em>k2FsaWNlQGNvbnRvc28uY29t</em> --interface scan --method analyze --scanid "<em>55555555-5555-5555-5555-555555555555</em>" --sourcecodearchive "<em>C:\Source.zip</em>"</span>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <p>
+                        To learn more about creating the source code archive of an application, click the following article number to view the article in the Lucent Sky Knowledge Base:
+                        <br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;<a href="342055">KB342055</a> How to create a source code archive of an application for analysis and mitigation</a>
+                    </p>
+                    The command below will check the status of the scan with scan ID <em>55555555-5555-5555-5555-555555555555</em>.
+                    <table>
+                        <tbody>
+                            <tr>
+                                <td style="margin: 5px 0; padding: 0 5px; border-width: 1px; border-style: solid; border-collapse: collapse;">
+                                    <span style="font-family: Consolas">SkyAnalyzer.Interface.Console.exe --credential <em>k2FsaWNlQGNvbnRvc28uY29t</em> --interface scan --method status --scanid "<em>55555555-5555-5555-5555-555555555555</em>"</span>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <br />
+                    The command below will download the secured source code archive of the scan with scan ID <em>55555555-5555-5555-5555-555555555555</em> to <em>C:\SecuredSource.zip</em>. The secured source code contains mitigation information and original source code.
+                    <table>
+                        <tbody>
+                            <tr>
+                                <td style="margin: 5px 0; padding: 0 5px; border-width: 1px; border-style: solid; border-collapse: collapse;">
+                                    <span style="font-family: Consolas">SkyAnalyzer.Interface.Console.exe --credential <em>k2FsaWNlQGNvbnRvc28uY29t</em> --interface scan --method mitigate --scanid "<em>55555555-5555-5555-5555-555555555555</em>" --securedsourcecodearchive "C:\SecuredSource.zip" --scanmitigationoption 3</span>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <br />
+                    The command below will download the security report in <em>HTML</em> format of the scan with scan ID <em>55555555-5555-5555-5555-555555555555</em> to <em>C:\Report.zip</em>.
+                    <table>
+                        <tbody>
+                            <tr>
+                                <td style="margin: 5px 0; padding: 0 5px; border-width: 1px; border-style: solid; border-collapse: collapse;">
+                                    <span style="font-family: Consolas">SkyAnalyzer.Interface.Console.exe --credential <em>k2FsaWNlQGNvbnRvc28uY29t</em> --interface scan --method report --scanid "<em>55555555-5555-5555-5555-555555555555</em>" --report "C:\Report.zip" --reportformat html</span>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <br />
+                    The command below will delete the scan with scan ID <em>55555555-5555-5555-5555-555555555555</em>.
+                    <table>
+                        <tbody>
+                            <tr>
+                                <td style="margin: 5px 0; padding: 0 5px; border-width: 1px; border-style: solid; border-collapse: collapse;">
+                                    <span style="font-family: Consolas">SkyAnalyzer.Interface.Console.exe --credential <em>k2FsaWNlQGNvbnRvc28uY29t</em> --interface scan --method delete --scanid "<em>55555555-5555-5555-5555-555555555555</em>"</span>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </li>
+            </ul>
+        </li>
+    </ul>
+</section>
+
+<section class="bs-docs-section">
+    <h1 id="properties">
+        Properties
+    </h1>
+    <p>
+        Article ID: 513289 – Last Reviewed: May 30, 2015 – Revision 1.1
+    </p>
+    <p>
+        <strong>Applies to</strong>
+    </p>
+    <ul>
+        <li>
+            Lucent Sky AVM Enterprise 2
+        </li>
+        <li>
+            Lucent Sky AVM Standard 2
+        </li>
+        <li>
+            Lucent Sky AVM Enterprise 1
+        </li>
+        <li>
+            Lucent Sky AVM Standard 1
+        </li>
+        <li>
+            Lucent Sky AVM On-Demand
+        </li>
+    </ul>
+    <p>
+        <strong>Keywords</strong>: kbgetstarted avm interface cli KB513289
+    </p>
+</section>

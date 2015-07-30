@@ -1,0 +1,201 @@
+---
+layout: default
+title: Mapping between Lucent Sky AVM built-in rules and OWASP Top 10 
+description: 
+permalink: /en/kb/598235.html
+---
+
+<section class="bs-docs-section">
+    <h1 id="introduction">
+        Introduction
+    </h1>
+    <p>
+        The built-in rules of Lucent Sky AVM covers 14 vulnerabilities and weaknesses listed in the Common Weakness Enumeration (CWE). This document provides a mapping between these CWE vulnerabilities and the security problems listed in OWSAP Top 10.
+    </p>
+</section>
+
+<section class="bs-docs-section">
+    <h1 id="more-information">
+        More Information
+    </h1>
+    <h2 id="cwe-rules-vs-owasp-top-10">
+        Mapping of CWE vulnerabilities and OWASP Top 10
+    </h2>
+    <table>
+        <thead style="background-color: #c8c8c8;">
+            <tr>
+                <td style="margin: 5px 0; padding: 0 5px; border-width: 1px; border-style: solid; border-collapse: collapse;">
+                    OWASP Top 10
+                </td>
+                <td style="margin: 5px 0; padding: 0 5px; border-width: 1px; border-style: solid; border-collapse: collapse;">
+                    CWE Vulnerabilities
+                </td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td style="margin: 5px 0; padding: 0 5px; border-width: 1px; border-style: solid; border-collapse: collapse;" rowspan="4">
+                    A1-Injection
+                </td>
+                <td style="margin: 5px 0; padding: 0 5px; border-width: 1px; border-style: solid; border-collapse: collapse;">
+                    CWE-78: Improper Neutralization of Special Elements used in an OS Command ('OS Command Injection')
+                </td>
+            </tr>
+            <tr>
+                <td style="margin: 5px 0; padding: 0 5px; border-width: 1px; border-style: solid; border-collapse: collapse;">
+                    CWE-89: Improper Neutralization of Special Elements used in an SQL Command ('SQL Injection')
+                </td>
+            </tr>
+            <tr>
+                <td style="margin: 5px 0; padding: 0 5px; border-width: 1px; border-style: solid; border-collapse: collapse;">
+                    CWE-90: Improper Neutralization of Special Elements used in an LDAP Query ('LDAP Injection')
+                </td>
+            </tr>
+            <tr>
+                <td style="margin: 5px 0; padding: 0 5px; border-width: 1px; border-style: solid; border-collapse: collapse;">
+                    CWE-643: Improper Neutralization of Data within XPath Expressions ('XPath Injection')
+                </td>
+            </tr>
+            <tr>
+                <td style="margin: 5px 0; padding: 0 5px; border-width: 1px; border-style: solid; border-collapse: collapse;">
+                    A2-Broken Authentication and Session Management
+                </td>
+                <td style="margin: 5px 0; padding: 0 5px; border-width: 1px; border-style: solid; border-collapse: collapse;">
+                    Unrelated to source code vulnerabilities
+                </td>
+            </tr>
+            <tr>
+                <td style="margin: 5px 0; padding: 0 5px; border-width: 1px; border-style: solid; border-collapse: collapse;">
+                    A3-Cross-Site Scripting (XSS)
+                </td>
+                <td style="margin: 5px 0; padding: 0 5px; border-width: 1px; border-style: solid; border-collapse: collapse;">
+                    CWE-79: Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting')
+                </td>
+            </tr>
+            <tr>
+                <td style="margin: 5px 0; padding: 0 5px; border-width: 1px; border-style: solid; border-collapse: collapse;" rowspan="2">
+                    A4-Insecure Direct Object References
+                </td>
+                <td style="margin: 5px 0; padding: 0 5px; border-width: 1px; border-style: solid; border-collapse: collapse;">
+                    CWE-22: Improper Limitation of a Pathname to a Restricted Directory ('Path Traversal')
+                </td>
+            </tr>
+            <tr>
+                <td style="margin: 5px 0; padding: 0 5px; border-width: 1px; border-style: solid; border-collapse: collapse;">
+                    CWE-171: Cleansing, Canonicalization, and Comparison Errors
+                </td>
+            </tr>      
+            <tr>
+                <td style="margin: 5px 0; padding: 0 5px; border-width: 1px; border-style: solid; border-collapse: collapse;">
+                    A5-Security Misconfiguration
+                </td>
+                <td style="margin: 5px 0; padding: 0 5px; border-width: 1px; border-style: solid; border-collapse: collapse;">
+                    Unrelated to source code vulnerabilities
+                </td>
+            </tr>
+            <tr>
+                <td style="margin: 5px 0; padding: 0 5px; border-width: 1px; border-style: solid; border-collapse: collapse;" rowspan="5">
+                    A6-Sensitive Data Exposure
+                </td>
+                <td style="margin: 5px 0; padding: 0 5px; border-width: 1px; border-style: solid; border-collapse: collapse;">
+                    CWE-171: Cleansing, Canonicalization, and Comparison Errors
+                </td>
+            </tr>
+            <tr>
+                <td style="margin: 5px 0; padding: 0 5px; border-width: 1px; border-style: solid; border-collapse: collapse;">
+                    CWE-209: Information Exposure Through an Error Message
+                </td>
+            </tr>
+            <tr>
+                <td style="margin: 5px 0; padding: 0 5px; border-width: 1px; border-style: solid; border-collapse: collapse;">
+                    CWE-326: Inadequate Encryption Strength
+                </td>
+            </tr>
+            <tr>
+                <td style="margin: 5px 0; padding: 0 5px; border-width: 1px; border-style: solid; border-collapse: collapse;">
+                    CWE-327: Use of a Broken or Risky Cryptographic Algorithm
+                </td>
+            </tr>
+            <tr>
+                <td style="margin: 5px 0; padding: 0 5px; border-width: 1px; border-style: solid; border-collapse: collapse;">
+                    CWE-359: Exposure of Private Information ('Privacy Violation')
+                </td>
+            </tr>
+            <tr>
+                <td style="margin: 5px 0; padding: 0 5px; border-width: 1px; border-style: solid; border-collapse: collapse;">
+                    A7-Missing Function Level Access Control
+                </td>
+                <td style="margin: 5px 0; padding: 0 5px; border-width: 1px; border-style: solid; border-collapse: collapse;">
+                    Unrelated to source code vulnerabilities
+                </td>
+            </tr>
+            <tr>
+                <td style="margin: 5px 0; padding: 0 5px; border-width: 1px; border-style: solid; border-collapse: collapse;" rowspan="2">
+                    A8-Cross-Site Request Forgery (CSRF)
+                </td>
+                <td style="margin: 5px 0; padding: 0 5px; border-width: 1px; border-style: solid; border-collapse: collapse;">
+                    CWE-79: Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting')
+                </td>
+            </tr>    
+            <tr>
+                <td style="margin: 5px 0; padding: 0 5px; border-width: 1px; border-style: solid; border-collapse: collapse;">
+                    CWE-113: Improper Neutralization of CRLF Sequences in HTTP Headers ('HTTP Response Splitting')
+                </td>
+            </tr>      
+            <tr>
+                <td style="margin: 5px 0; padding: 0 5px; border-width: 1px; border-style: solid; border-collapse: collapse;" rowspan="2">
+                    A9-Using Components with Known Vulnerabilities
+                </td>
+                <td style="margin: 5px 0; padding: 0 5px; border-width: 1px; border-style: solid; border-collapse: collapse;">
+                    CWE-327: Use of a Broken or Risky Cryptographic Algorithm
+                </td>
+            </tr>    
+            <tr>
+                <td style="margin: 5px 0; padding: 0 5px; border-width: 1px; border-style: solid; border-collapse: collapse;">
+                    CWE-330: Use of Insufficiently Random Values
+                </td>
+            </tr>   
+            <tr>
+                <td style="margin: 5px 0; padding: 0 5px; border-width: 1px; border-style: solid; border-collapse: collapse;">
+                    A10-Unvalidated Redirects and Forwards
+                </td>
+                <td style="margin: 5px 0; padding: 0 5px; border-width: 1px; border-style: solid; border-collapse: collapse;">
+                    CWE-601: URL Redirection to Untrusted Site ('Open Redirect')
+                </td>
+            </tr>              
+        </tbody>
+    </table>
+</section>
+
+<section class="bs-docs-section">
+    <h1 id="properties">
+        Properties
+    </h1>
+    <p>
+        Article ID: 5598235 – Last Reviewed: July 28, 2015 – Revision 1.0
+    </p>
+    <p>
+        <strong>Applies to</strong>
+    </p>
+    <ul>
+        <li>
+            Lucent Sky AVM Enterprise 2
+        </li>
+        <li>
+            Lucent Sky AVM Standard 2
+        </li>
+        <li>
+            Lucent Sky AVM Enterprise 1
+        </li>
+        <li>
+            Lucent Sky AVM Standard 1
+        </li>
+        <li>
+            Lucent Sky AVM On-Demand
+        </li>
+    </ul>
+    <p>
+        <strong>Keywords</strong>: avm cwe owasp KB598235
+    </p>
+</section>
+
