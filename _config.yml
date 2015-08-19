@@ -1,12 +1,12 @@
 # name of the software
-name: Lucent Sky Support
+name: EDGE DESIGN
 
 # list of additional links on the right of the top menu
 headerLinks:
 
 # list if additional links on the footer
 footerLinks:
-  - title: © 2015 Lucent Sky
+  - title: © 2015 EDGE DESIGN
     url: https://www.lucentsky.com/
   
 # header
