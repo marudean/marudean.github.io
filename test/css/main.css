@@ -1080,7 +1080,7 @@ a.accordion-toggle  i{
 .sinlge-skill {
   background:#f2f2f2;
   border-radius: 100%;
-  color: #FFFFFF;
+  color: #000000;
   font-size: 22px;
   font-weight: bold;
   height: 200px;
@@ -1093,7 +1093,7 @@ a.accordion-toggle  i{
 }
 
 .sinlge-skill p em {
-  color: #FFFFFF;
+  color: #000000;
   font-size: 38px;
 }
 
