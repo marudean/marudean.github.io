@@ -1357,6 +1357,26 @@ ul.social_icons li  a i{
   margin-left: -32px;
 }
 
+.team-bar .fifth-arrow .fa-angle-down {
+  background:#2D7DA4;
+  margin-left:-33px
+ }
+
+.team-bar .sixth-arrow .fa-angle-up {
+  background:#6AA42F;
+  margin-left: -33px;
+}
+
+.team-bar .seventh-arrow .fa-angle-down {
+  background:#FFBD20;
+  margin-left: -32px;
+}
+
+.team-bar .eighth-arrow .fa-angle-up {
+  background:#db3615;
+  margin-left: -32px;
+}
+
 .team .single-profile-top:before, 
 .team .single-profile-top:after {
   content: "";
