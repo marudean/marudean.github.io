@@ -1291,6 +1291,32 @@ ul.social_icons li  a i{
   width: 20%;
 }
 
+.team-bar .fifth-arrow {
+  float: left;
+  margin-left: 5px;
+  margin-right: 35px;
+  width: 22%;
+}
+
+.team-bar .sixth-arrow {
+  float: left;
+  margin-left: 5px;
+  width: 21%;
+}
+
+.team-bar .seventh-arrow {
+  float: left;
+  margin-left: 40px;
+  margin-right: 12px;
+  width: 22%;
+}
+
+.team-bar .eighth-arrow {
+  float: left;
+  margin-left: 25px;
+  width: 20%;
+}
+
 .team-bar .first-one-arrow hr {
   border-bottom: 1px solid #2D7DA4;
   border-top: 1px solid #2D7DA4;
@@ -1313,6 +1339,27 @@ ul.social_icons li  a i{
 }
 
 .team-bar .fourth-arrow hr {
+  border-bottom: 1px solid #db3615;
+  border-top: 1px solid #db3615;
+}
+
+.team-bar .fifth-arrow hr {
+  border-bottom: 1px solid #2D7DA4;
+  border-top: 1px solid #2D7DA4;
+ }
+
+.team-bar .sixth-arrow hr {
+  border-bottom: 1px solid #6aa42f;
+  border-top: 1px solid #6aa42f;
+}
+
+.team-bar .seventh-arrow hr {
+  border-bottom: 1px solid #FFBD20;
+  border-top: 1px solid #FFBD20;
+
+}
+
+.team-bar .eighth-arrow hr {
   border-bottom: 1px solid #db3615;
   border-top: 1px solid #db3615;
 }
