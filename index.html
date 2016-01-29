@@ -41,25 +41,11 @@
                                 <li><a href="https://www.youtube.com/channel/UC57IcbDRteVIdCeaEzRYjgQ/feed"><i class="fa fa-youtube"></i></a></li>
                                 
                             </ul>
-                            <div class="search">
-                            	<script>
-                                  (function() {
-                                  var cx = '007574243568272398260:i7l4avkjlok';
-    				  var gcse = document.createElement('script');
-				  gcse.type = 'text/javascript';
-    				  gcse.async = true;
-				  gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
-				  '//cse.google.com/cse.js?cx=' + cx;
-				  var s = document.getElementsByTagName('script')[0];
-				  s.parentNode.insertBefore(gcse, s);
-					 })();
-				</script>
-				<gcse:search></gcse:search>
-                                <form role="form">
-                                    <input type="text" class="search-form" autocomplete="off" placeholder="Search">
-                                    <i class="fa fa-search"></i>
-                                </form>
-                           </div>
+                            <div class="bs-docs-masthead" id="content">
+                    <div class="container">
+                    <input type="text" id="query" placeholder="Search" onkeyup="if (event.keyCode==13) { window.open('http://marudean.github.io/search?q=' + $('#query').val()); }" style="width: 50%; padding: 10px 20px 10px 40px; color: #969696; font-weight: bold; font-size: 20px; border: 1px solid #969696; background-image: url('/assets/images/icon-search.png'); background-repeat: no-repeat; background-position: left center;" />
+                    </div>
+                    </div>
                        </div>
                     </div>
                 </div>
