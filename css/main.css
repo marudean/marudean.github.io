@@ -591,7 +591,10 @@ input.search-form:hover {
 #recent-works{
     padding-bottom: 70px;
 }
-
+#recent-works-index{
+	background: #2f2f2f;
+	padding-bottom: 70px;
+}
 .recent-work-wrap {
   position: relative;
 }
