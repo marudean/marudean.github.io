@@ -64,19 +64,11 @@
                 
                 <div class="collapse navbar-collapse navbar-right">
                     <ul class="nav navbar-nav">
-                        {% if page.menu == "home" %}
-                        <li class="active">
-                        {% else %}
-                        <li>
-                        {% endif %}
+                        <li id="home">
                             <a href="index.html">HOME</a>
                         </li>
                         
-                        {% if page.menu == "about-us" %}
-                        <li class="active">
-                        {% else %}
-                        <li>
-                        {% endif %}
+                        <li id="about-us">
                             <a href="about-us.html">ABOUT US</a>
                         </li>
                         
@@ -227,5 +219,10 @@
     <script src="js/jquery.isotope.min.js"></script>
     <script src="js/main.js"></script>
     <script src="js/wow.min.js"></script>
+    <script>
+        {% for menu in page.menu %}
+            $('#{{ menu }}').addClass('active');
+        {% endfor %}
+    </script>
 </body>
 </html>
