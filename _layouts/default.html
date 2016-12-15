@@ -64,9 +64,28 @@
                 
                 <div class="collapse navbar-collapse navbar-right">
                     <ul class="nav navbar-nav">
-                        <li><a href="index.html">HOME</a></li>
-                        <li><a href="about-us.html">ABOUT US</a></li>
+                        {% if page.menu == "home" %}
+                        <li class="active">
+                        {% else %}
+                        <li>
+                        {% endif %}
+                            <a href="index.html">HOME</a>
+                        </li>
+                        
+                        {% if page.menu == "about-us" %}
+                        <li class="active">
+                        {% else %}
+                        <li>
+                        {% endif %}
+                            <a href="about-us.html">ABOUT US</a>
+                        </li>
+                        
+                        
+                        {% if page.menu == "framesets" %}
+                        <li class="dropdown active">
+                        {% else %}
                         <li class="dropdown">
+                        {% endif %}
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">FRAMESETS <i class="fa fa-angle-down"></i></a>
                             <ul class="dropdown-menu">
                                 <li><a href="Road.html">ROAD</a></li>
@@ -77,7 +96,12 @@
                                 <li><a href="ebike.html">E-BIKE</a></li>
                             </ul>
                         </li>
+                        
+                        {% if page.menu == "wheelsets" %}
                         <li class="dropdown active">
+                        {% else %}
+                        <li class="dropdown">
+                        {% endif %}
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">WHEELSETS <i class="fa fa-angle-down"></i></a>
                             <ul class="dropdown-menu">
                                 <li><a href="Thunderbolt.html">CARBON THUNDERBOLT</a></li>
@@ -85,7 +109,12 @@
                                 <li><a href="XLR.html">ALLOY XLR</a></li>
                             </ul>
                         </li>
+                        
+                        {% if page.menu == "bike-parts" %}
+                        <li class="dropdown active">
+                        {% else %}
                         <li class="dropdown">
+                        {% endif %}
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">BIKE PARTS <i class="fa fa-angle-down"></i></a>
                             <ul class="dropdown-menu">
                                 <li><a href="Handlebar.html">HANDLEBAR</a></li>
@@ -96,7 +125,12 @@
                                 <li><a href="Seatpost.html">SEATPOST</a></li>
                             </ul>
                         </li>
+                        
+                        {% if page.menu == "bike-accessories" %}
+                        <li class="dropdown active">
+                        {% else %}
                         <li class="dropdown">
+                        {% endif %}
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">BIKE ACCESSORIES <i class="fa fa-angle-down"></i></a>
                             <ul class="dropdown-menu">
                                 <li><a href="QR.html">QUICK RELEASE</a></li>
@@ -107,7 +141,14 @@
                                 <li><a href="Bar tape.html">BAR TAPE</a></li>
                             </ul>
                         </li>
-                        <li><a href="contact-us.html">CONTACT US</a></li>                        
+                        
+                        {% if page.menu == "contact-us" %}
+                        <li class="active">
+                        {% else %}
+                        <li>
+                        {% endif %}
+                            <a href="contact-us.html">CONTACT US</a>
+                        </li>                        
                     </ul>
                 </div>
             </div><!--/.container-->
