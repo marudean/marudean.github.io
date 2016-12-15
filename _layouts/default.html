@@ -72,40 +72,28 @@
                             <a href="about-us.html">ABOUT US</a>
                         </li>
                         
-                        {% if page.menu == "framesets" %}
-                        <li class="dropdown active">
-                        {% else %}
-                        <li class="dropdown">
-                        {% endif %}
+                        <li id="framesets" class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">FRAMESETS <i class="fa fa-angle-down"></i></a>
                             <ul class="dropdown-menu">
-                                <li><a href="Road.html">ROAD</a></li>
-                                <li><a href="MTB.html">MTB</a></li>
-                                <li><a href="Track.html">TRACK</a></li>
-                                <li><a href="TT.html">TIME TRIAL</a></li>
-                                <li><a href="CX.html">CYCLOCROSS</a></li>
-                                <li><a href="ebike.html">E-BIKE</a></li>
+                                <li id="road"><a href="Road.html">ROAD</a></li>
+                                <li id="mtb"><a href="MTB.html">MTB</a></li>
+                                <li id="track"><a href="Track.html">TRACK</a></li>
+                                <li id="time-trial"><a href="TT.html">TIME TRIAL</a></li>
+                                <li id="cyclocross"><a href="CX.html">CYCLOCROSS</a></li>
+                                <li id="e-bike"><a href="ebike.html">E-BIKE</a></li>
                             </ul>
                         </li>
                         
-                        {% if page.menu == "wheelsets" %}
-                        <li class="dropdown active">
-                        {% else %}
-                        <li class="dropdown">
-                        {% endif %}
+                        <li id="wheelsets" class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">WHEELSETS <i class="fa fa-angle-down"></i></a>
                             <ul class="dropdown-menu">
-                                <li><a href="Thunderbolt.html">CARBON THUNDERBOLT</a></li>
-                                <li class="active"><a href="Aero.html">CARBON AERO</a></li>
-                                <li><a href="XLR.html">ALLOY XLR</a></li>
+                                <li id="carbon-thunderbolt"><a href="Thunderbolt.html">CARBON THUNDERBOLT</a></li>
+                                <li id="carbon-aero"><a href="Aero.html">CARBON AERO</a></li>
+                                <li id="alloy-xlr"><a href="XLR.html">ALLOY XLR</a></li>
                             </ul>
                         </li>
                         
-                        {% if page.menu == "bike-parts" %}
-                        <li class="dropdown active">
-                        {% else %}
-                        <li class="dropdown">
-                        {% endif %}
+                        <li id="bike-parts" class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">BIKE PARTS <i class="fa fa-angle-down"></i></a>
                             <ul class="dropdown-menu">
                                 <li><a href="Handlebar.html">HANDLEBAR</a></li>
@@ -117,11 +105,7 @@
                             </ul>
                         </li>
                         
-                        {% if page.menu == "bike-accessories" %}
-                        <li class="dropdown active">
-                        {% else %}
-                        <li class="dropdown">
-                        {% endif %}
+                        <li id="bike-accessories" class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">BIKE ACCESSORIES <i class="fa fa-angle-down"></i></a>
                             <ul class="dropdown-menu">
                                 <li><a href="QR.html">QUICK RELEASE</a></li>
@@ -133,22 +117,16 @@
                             </ul>
                         </li>
                         
-                        {% if page.menu == "contact-us" %}
-                        <li class="active">
-                        {% else %}
-                        <li>
-                        {% endif %}
+                        <li id="contact-us">
                             <a href="contact-us.html">CONTACT US</a>
                         </li>                        
                     </ul>
                 </div>
             </div><!--/.container-->
         </nav><!--/nav-->
-        
     </header><!--/header-->
-
    
-             {{content}}
+    {{content}}
 
     <section id="bottom">
         <div class="container wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="600ms">
@@ -221,7 +199,7 @@
     <script src="js/wow.min.js"></script>
     <script>
         {% for menu in page.menu %}
-            $('#{{ menu }}').addClass('active');
+        $('#{{ menu }}').addClass('active');
         {% endfor %}
     </script>
 </body>
