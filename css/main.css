@@ -2643,8 +2643,9 @@ shortcodes page css
   margin-left: 15px;
 }
 
-
-
-
-
-
+@media (min-width: 768px) {
+  .row.equal {
+    display: flex;
+    flex-wrap: wrap;
+  }
+}
